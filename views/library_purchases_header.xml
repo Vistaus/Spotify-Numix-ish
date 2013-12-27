@@ -1,0 +1,18 @@
+<?
+-- This page uses generic_header.xml.
+
+template = {
+  icon = "SidebarRowIcon|purchases",
+  title = function() ?> @{Purchased Files} <? end,
+  description = function() ?> @{List of purchased files description} <? end,
+  title_items = {
+    "standard_title",
+    "filler"
+  },
+  toolbar_items = {
+  },
+}
+
+include("views/generic_header.xml")
+
+?>

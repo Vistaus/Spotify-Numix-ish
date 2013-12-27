@@ -1,0 +1,442 @@
+<%
+include("views/functions.xml")
+
+if next(data) == nil then
+data = {
+  step_name = "purchase_tracks",
+  image = "mosaic:http://martinaengwall.webblogg.se/images/2008/pgm9fisk_11098470.jpg;http://www.sportfiskeguiden.se/fiskar/bilder/braxen.jpg;http://www.kockendaniel.se/wp-content/uploads/2008/11/xx070210-fisk.jpg;http://wildmartin.com/res/default/clip_image00193.jpg",
+  name = "Big Fish",
+  link = "spotify:search:fisk",
+  page = 5,
+  num_page = 10,
+  track_trans_tags = {
+    title = "",
+	description = "",
+	ok = "sPurchaseDlgYes",
+	cancel = "xTrackActionPerformCancel"
+  },
+  ok_button_disabled = true,
+  track_trans_params = {
+	ok = {
+      27
+	}
+  },
+  purchase_verb = 1,
+  tracks = {
+    {
+      link = "spotify:search:apa",
+      image = "http://martinaengwall.webblogg.se/images/2008/pgm9fisk_11098470.jpg",
+      name = "Singing the blues",
+      artist = "Some Sad Dude"
+    },
+    {
+      link = "spotify:search:apa",
+      image = "http://www.sportfiskeguiden.se/fiskar/bilder/braxen.jpg",
+      name = "A great Song",
+      artist = "Tha Great Singer"
+    },
+    {
+      link = "spotify:search:apa",
+      image = "http://www.sportfiskeguiden.se/fiskar/bilder/braxen.jpg",
+      name = "WOOHOOO!",
+      artist = "Tha Great Singer"
+    },
+    {
+      link = "spotify:search:apa",
+      image = "http://www.kockendaniel.se/wp-content/uploads/2008/11/xx070210-fisk.jpg",
+      name = "Fisk e gott!",
+      artist = "Fiskarna"
+    },
+    {
+      link = "spotify:search:apa",
+      image = "http://wildmartin.com/res/default/clip_image00193.jpg",
+      name = "Ät fisk",
+      artist = "Fiskarna"
+    }
+  }
+}
+end
+
+if data.track_trans_params == nil then
+  data.track_trans_params = {}
+end
+
+function has_string(str)
+  return str and string.len(str) > 0
+end
+
+function unavailable_mutator(item)
+  item()
+  %>
+  <deck margin="0,3,0,0" id="unavailable_deck">
+    <box />
+    <text style="error-link">@{xPurchaseFlowNotAvailableForPurchase}</text>
+  </deck>
+  <%
+end
+
+function large_button_factory(left, right)
+  return function (sel) %>
+<box>
+  <img alt="MainlistPurchaseAlbumLargeGreyBackground|${sel}"/>
+  <hbox margin="3,0,3,2">
+    % if left ~="" then
+    <text margin ="7,1,0,0" style="skinfont:MainlistLargeGreyButton|${sel}" class="left" align="middle">${left}</text>
+    % end
+    <img margin="2,0,2,-2" alt="MainlistPurchaseAlbumLargeIcon" imagemode="native" align="middle" />
+    % if right ~="" then
+    <text margin="0,1,7,0" style="skinfont:MainlistLargeGreyButton|${sel}" class="right" align="middle">${right}</text>
+    % end
+  </hbox>
+</box><%
+  end
+end
+
+function small_button_factory(left, right)
+  return function (sel) %>
+<box>
+  <img alt="BuyButtonSmallClean|${sel}"/>
+  <hbox margin="2,0,2,2">
+    % if left ~="" then
+    <text margin ="7,0,0,0" style="skinfont:MainlistPurchaseButton|${sel}" class="left" align="middle">${left}</text>
+    % end
+    <img margin="2,0,2,-2" src="Buttons/buy_icon.png" imagemode="native" align="middle" />
+    % if right ~="" then
+    <text margin="0,0,7,0" style="skinfont:MainlistPurchaseButton|${sel}" class="right" align="middle">${right}</text>
+    % end
+  </hbox>
+</box><%
+  end
+end
+
+function confirm_button_factory(left, right)
+  return function (sel)
+    style_add = (sel and string.len(sel) > 0) and "-"..sel or sel
+%>
+<box >
+  <img alt="LightboxButton|${sel}" />
+  <hbox margin="2,0,2,2">
+    % if left ~="" then
+    <text margin ="7,0,0,0" style="button-ok${style_add}" class="left" align="middle">${left}</text>
+    % end
+    <img margin="2,0,0,0" alt="DownloadCreditsIconBright" imagemode="native" align="middle" />
+    % if right ~="" then
+    <text margin="2,0,7,0" style="button-ok${style_add}" class="right" align="middle">${right}</text>
+    % end
+  </hbox>
+</box>
+<%
+  end
+end
+
+function print_buy_button(button, onclick, class) %>
+<hbox>
+  <deck mouseoffsets="1" onclick="${onclick}" class="${class}" align="middle">
+    % button("")
+    % button("mousedown")
+  </deck>
+  <box maxwidth="inf" />
+</hbox>
+<% end
+
+function print_buy_button_fakedown(button) %>
+<hbox>
+  <box align="middle">
+    % button("mousedown")
+  </box>
+  <box maxwidth="inf" />
+</hbox>
+<% end
+
+function print_confirm_button(button, onclick)
+%><hbox>
+  <deck mouseoffsets="1" onclick="${onclick}">
+    % button("")
+    % button("mousedown")
+  </deck>
+</hbox><%
+end
+
+function print_paged_track_grid(mutator)
+%>
+<autogrid colspacing="20" rowspacing="20" margin="20" opacity="1.0">
+	%   for i, track in ipairs(data.tracks) do
+	<box maxwidth="inf" class="grid_item" id="${track.link}" minwidth="100">
+		<vbox align="left">
+			<box align="left">
+			  <img src="${track.image}" style="trackImageSmall" alt="PlaceholderTrack|80"/>
+			  <img src="skin:ShadowHighlight" style="trackImageSmallShadow" margin="-2,-1,-2,0"/>
+			</box>
+			<vbox>
+				<% item = function () %>
+				  <text margin="0,2,0,0" style="trackTitle">${track.name}</text>
+				  <text margin="0,2,0,0" style="trackArtist">by ${track.artist}</text>
+				<% end
+				if mutator then mutator(item) else item() end
+				%>
+			</vbox>
+		</vbox>
+	</box>
+	% end
+</autogrid>
+<hbox margin="0,0,0,24" align="center">
+<?
+ if data.num_page ~= 1 then
+   left, right = data.page - 10, data.page + 10
+   if left < 1 then left = 1 end
+   if right > data.num_page then right = data.num_page end
+   if data.page ~= 1 then
+	 prev = data.page - 1
+	 ?><button width="19" height="20" image="PaginationPrevious" onclick="gotoPage${prev}" margin="0,0,5,0" /><?
+   end
+   cur = left
+   while cur <= right do
+	 if cur == data.page then
+	 ?> <img alt="PaginationIndicator" imagemode="native" align="middle" width="7" margin="3,0"/> <?
+	 else
+	  size = 7
+	  -- If there are more pages than we can show at the end or beginning, fade the sizes.
+	  if left > 1 and cur < data.page then
+		size = math.min((cur - left)*2 + 1, 7)
+	  end
+	  if right < data.num_page and cur > data.page then
+		size = math.min((right - cur)*2 + 1, 7)
+	  end
+	 ?> <box onclick="gotoPage${cur}" cursor="hand">
+	   <img alt="PaginationIndicator|inactive" imagemode="aspect" align="middle" height="20" width="${size}" margin="3,0" noclick="1"/>
+	 </box> <?
+	 end
+	 cur = cur + 1
+   end
+   if data.page ~= data.num_page then
+	 next = data.page + 1
+	 ?><button width="19" height="20" image="PaginationNext" onclick="gotoPage${next}" margin="5,0,0,0"/><?
+   end
+ end
+?>
+</hbox>
+<%
+end
+
+content = {
+  purchase_tracks = {
+    title = function()
+		if data.purchase_verb ~= 0 then
+		  %>@{xPurchaseFlowWindowTitleBuy}<%
+		else
+		  %>@{xPurchaseFlowWindowTitleGet}<%
+		end
+	  end,
+    content = function() %>
+    <vbox>
+      %--<debug color="kaka" />
+    <hbox>
+        <box background="bg_plaid.png" backgroundRepeat="xy" width="150">
+            <vbox background="bg_popup_sidebar.png" backgroundRepeat="y">
+                <vbox align="center" width="110" margin="20,20,20,0" id="playlist_item">
+                    <box align="left">
+                      <img class="playlist_image" src="${data.image}" alt="PlaceholderPlaylist|128" style="trackImage" />
+                      <img class="playlist_shadow" src="skin:RoundedCornersShadowHighlight" margin="-4,-3,-4,-5"/>
+                    </box>
+                    <vbox>
+                        <text margin="0,5,0,0" style="trackTitle">${data.name}</text>
+                        <text margin="0,2,0,0" style="trackArtist; max-lines:2" id="buy_tracks_numsyncable"></text>
+                        <deck margin="0,3,0,0" class="deck">
+                        <%
+                        get_all_text = "xPurchaseFlowGetAll"
+                        get_price_text = "xPurchaseFlowGetPrice"
+                        if data.purchase_verb ~= 0 then
+                          get_all_text = "xPurchaseFlowBuyAll"
+                          get_price_text = "xPurchaseFlowBuyPrice"
+                        end
+                        %>
+                            % button = large_button_factory("", trans(get_all_text))
+                            % print_buy_button(button, "confirmAll", "confirm")
+                            % print_buy_button(large_button_factory(trans(get_price_text), "4711"), "buyAll", "buy")
+                            % print_buy_button_fakedown(button)
+                            <img alt="DownloadPending" imagemode="native" align="middle" />
+                            <img alt="OfflineIndicators|down" animdelay="80" imagemode="native" align="middle" />
+                            <img src="checkmark.png" imagemode="native" align="middle" />
+                        </deck>
+                    </vbox>
+                </vbox>
+            </vbox>
+        </box>
+		<scrollview flex="1" maxwidth="inf" maxheight="500">
+		  <vbox flex="1" background="bg_plaid.png" backgroundRepeat="xy">
+		  <% print_paged_track_grid(function(item)
+		    item()
+			get_text = "xPurchaseFlowGet"
+			get_price_text = "xPurchaseFlowGetPrice"
+			if data.purchase_verb ~= 0 then
+			  get_text = "xPurchaseFlowBuy"
+			  get_price_text = "xPurchaseFlowBuyPrice"
+			end
+		    %>
+			<deck margin="0,3,0,0" class="deck">
+				% button = small_button_factory("", trans(get_text))
+				% print_buy_button(button, "confirmBuy", "confirm")
+				% print_buy_button(small_button_factory(trans(get_price_text), "4711"), "buy", "buy")
+				% print_buy_button_fakedown(button)
+				<img alt="DownloadPending" imagemode="native" align="middle"/>
+				<img alt="OfflineIndicators|down" animdelay="80" imagemode="native" align="middle "/>
+				<img src="checkmark.png" imagemode="native" align="middle" />
+				<text style="error-link">@{xPurchaseFlowHasDRM}</text>
+				<text style="error-link">@{xPurchaseFlowNotAvailableForPurchase}</text>
+				<text style="error-link">@{xPurchaseFlowNotPlayable}</text>
+				% print_buy_button(small_button_factory("", trans("xPurchaseFlowDownload")), "buy", "download")
+				<text style="error-link">@{xPurchaseFlowNotPlayableOnDevice}</text>
+				<box/>
+			</deck>
+		    <% end) %>
+		  </vbox>
+		</scrollview>
+    </hbox>
+    <box>
+        <box height="39" background="window-flow-footer.png" backgroundRepeat="x" flex="1"/>
+		<button image="LightboxButton" align="right" style="button-ok" padding="12,3,12,5" label="@{xPurchaseFlowClose}" onClick="close"/>
+    </box>
+    </vbox>
+    <% end
+  },
+  confirm_tracks = {
+    title = function()
+	  if data.purchase_verb ~= 0 then
+	  %> @{xTracksActionBuyHeader} <%
+	  else
+	  %> @{xTracksActionGetHeader} <%
+	  end
+	  end,
+    content = function()
+    %>
+    <vbox>
+      %--<debug color="kaka" />
+     <hbox>
+       <scrollview flex="1" maxwidth="inf" maxheight="500">
+       <vbox flex="1" background="bg_plaid.png" backgroundRepeat="xy">
+         % print_paged_track_grid(unavailable_mutator)
+       </vbox>
+       </scrollview>
+     </hbox>
+     <box>
+       <box height="39" background="window-flow-footer.png" backgroundRepeat="x" flex="1"/>
+         <hbox align="right">
+         <% orderButtons( function()
+           if not data.querying_price then
+		   button_text = "xTracksActionGetFor"
+		   if data.purchase_verb ~= 0 then
+		     button_text = "xTracksActionBuyFor"
+		   end
+           %>
+             <box style="button-ok">
+             % print_confirm_button(confirm_button_factory(trans(button_text), data.confirm_price), "confirm_tracks")
+              </box>
+           <%
+           else
+		   button_text = function() %>@{xTracksActionGettingPriceGet}<% end
+		   if data.purchase_verb ~= 0 then
+		     button_text = function() %>@{xTracksActionGettingPriceBuy}<% end
+		   end
+           %>
+             <button image="LightboxButton|disabled" align="right" disabled="1" style="button-ok-disabled" padding="12,0,12,2" label="${button_text()}"/>
+           <%
+           end
+         end, function() %>
+      <button image="LightboxButton|secondary" align="right" style="button-cancel" padding="12,0,12,2" label="@{xTracksActionGetNo}" onClick="cancel"/>
+      <% end) %>
+    </hbox>
+    </box>
+    </vbox>
+  <% end
+  },
+  purchase_credits = {
+    title = function() %>@{xPurchaseCreditsFlowWindowTitle}<% end,
+    content = function() %>
+      <html width="${data.html.width}" align="middle,center" height="${data.html.height}" url="${data.html.url}" careAboutNativeVisibility="0" />
+      <% end
+  },
+  connect_your_ipod = {
+    title = function() %>@{xConnectYourIpodTitle}<% end,
+    content = function() %>
+    <box height="376">
+      <vbox flex="1" background="devices/bg_blue.png">
+        <text style="connect-your-ipod-text">@{xConnectYourIpodText}</text>
+        <text style="connect-your-ipod-status"><%
+        if data.ipod_connected then
+          %>@{xConnectYourIpodSuccess}<%
+        else
+          %>@{xConnectYourIpodWaiting}<%
+        end
+        %></text>
+        <img src="devices/start_cable.png" edges="0,127,0,0" flex="1" minHeight="140" maxheight="inf" align="center" margin="0,50,0,0" />
+      </vbox>
+      <box align="bottom" flex="1">
+        <box align="bottom" height="39" background="window-flow-footer.png" backgroundRepeat="x" flex="1"/>
+        <hbox flex="1" align="right">
+		  <% orderButtons(function() %>
+			% if data.ipod_connected then
+			<button image="LightboxButton" style="button-ok" padding="12,3,12,5" label="@{xPurchaseFlowContinue}" onClick="continue"/>
+			% else
+			<button image="LightboxButton" style="button-ok-disabled" disabled="1" padding="12,3,12,5" label="@{xPurchaseFlowContinue}" onClick="continue"/>
+			% end
+		  <% end, function() %>
+			<button image="LightboxButton|secondary" style="button-cancel" padding="12,3,12,5" label="@{xPurchaseFlowCancel}" onClick="close"/>
+		  <% end) %>
+        </hbox>
+      </box>
+    </box>
+  <% end
+  }
+}
+%>
+
+<document>
+  %--<debug color="kaka"/>
+  <style>
+    trackTitle { size: 11; bold: 1; color: #eaeaea; flex: 1; max-lines: 1 }
+    trackArtist { size: 11; color: #989898; flex: 1; max-lines: 1 }
+    trackImage { width: 110; height: 110; image-mode: cutout; }
+    trackImageSmall { width: 80; height: 80; image-mode: cutout; }
+    trackImageSmallShadow { width: 84; height: 84; }
+    trackActionDescription { size: 14; color: #ffffff; text-shadow: #202020 1; }
+    purchaseButton { size: 11; height: 20; margin: 0,5,0,0 }
+    container {
+      width: 500;
+      height: 500;
+      align: center,middle;
+    }
+    button {
+      margin: 0,2,10,0;
+      face: tahoma;
+      size: 12;
+      align: center, middle;
+    }
+    button-cancel {
+      button;
+      color: #222;
+      text-shadow: #ededed 0 1;
+      height: 24;
+    }
+    button-cancel-disabled {
+      button-cancel;
+      color: #aaa;
+    }
+    button-ok {
+      button;
+      color: #fff;
+      text-shadow: #1a67a3 0 -1;
+    }
+    button-ok-mousedown {
+      button-ok;
+    }
+    button-ok-disabled {
+      button-ok;
+      color: #aaa;
+      text-shadow: #999 0 -1;
+    }
+    error-link { size: 11; height: 20; color: #fff; margin: 0,3,0,0;}
+    connect-your-ipod-text { face: arial; align: center, middle; size: 24; bold: 1; flex: 1; color: #464b52; margin: 10,20,5,5; }
+    connect-your-ipod-status { face: arial; align: center, middle; size: 18; bold: 1; flex: 1; color: #929497; margin: 0,0,0,0; }
+  </style>
+  <% include("views/generic_lightbox.xml") %>
+</document>

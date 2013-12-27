@@ -1,0 +1,47 @@
+<document>
+<?
+include("views/bubble_popup_style.xml")
+
+if not data.username then
+  data.username = "Smed-jan"
+  data.userlink = "spotify:user:smedjan"
+  data.userimage = "http://userserve-ak.last.fm/serve/_/43861211/Sun+Stroke+Project+studioanons180110.jpg"
+  data.message = "Saxophone, baby!"
+end
+
+?>
+
+  %--<debug color="kaka" />
+
+  <box onclick="cancel">
+
+    <vbox style="background" margin="8,8,8,7">
+      <hbox margin="0,0,0,0">
+        <link url="${data.userlink}"><img src="${data.userimage}" alt="PlaceholderUser|18" imagemode="cutout" height="18" width="18" /></link>
+        <hbox margin="7,2,0,0">
+          <text style="inbox-header" maxlines="1"><link url="${data.userlink}">${data.username}</link></text>
+        </hbox>
+      </hbox>
+      <?
+      count = -1
+      pos = 0
+      repeat
+        count = count + 1
+        pos = string.find(data.message, "\n", pos + 1)
+      until pos == nil
+      ?>
+      % if count > 3 then
+      <box width="200" maxheight="100" margin="0,7,0,0">
+        <img align="right" alt="VerticalScrollbar|bright,edge" width="1" />
+        <img align="right,top" alt="VerticalScrollbar|bright,edge" margin="0,0,1,0" width="13" height="1" />
+        <img align="right,bottom" alt="VerticalScrollbar|bright,edge" margin="0,0,1,0" width="13" height="1" />
+        <scrollview margin="0,0,1,0" scrollbarstyle="bright">
+          <text style="inbox-description" flex="1">${data.message}</text>
+        </scrollview>
+      </box>
+      % else
+      <text style="inbox-description" flex="1" width="200" margin="0,5,0,0">${data.message}</text>
+      % end
+    </vbox>
+  </box>
+</document>

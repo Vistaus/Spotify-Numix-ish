@@ -1,0 +1,17 @@
+
+	<style>
+		header1 {
+			face: arial;
+			size: 30;
+			color: #fff;
+			text-shadow: #222 0 1;
+			bold: true;
+		}
+		description1 {
+			size: 18;
+			color: #aaa;
+			face: arial;
+			text-shadow: #222 0 1;
+			link-color: #34a7e4
+		}
+	</style>

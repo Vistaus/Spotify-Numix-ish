@@ -1,0 +1,14 @@
+<document>
+<?
+include("views/bubble_popup_style.xml")
+?>
+%padding = 40
+  <box>
+    <vbox style="background" margin="${padding},16,${padding},20" onclick="clicked">
+      <text style="tutorial-title;">${data.title}</text>
+%if data.subtitle then
+      <text style="tutorial-subtitle;" margin="0,5,0,0">${data.subtitle}</text>
+%end
+    </vbox>
+  </box>
+</document>

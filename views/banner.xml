@@ -1,0 +1,11 @@
+<document>
+  <style>
+    container {
+      width: ${data.width};
+      height: ${data.height};
+    }
+  </style>
+  <box style="container">
+    <img src="${data.bgimage}" onClick="closeLightbox"/>
+  </box>
+</document>

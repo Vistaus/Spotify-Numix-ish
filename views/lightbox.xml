@@ -1,0 +1,42 @@
+<?
+if next(data) == nil then
+	data = {
+		url = "http://www.slashdot.org",
+		width = 650,
+		height = 300
+	}
+end
+
+?>
+<document>
+  <style>
+    container {
+      width: ${data.width};
+      height: ${data.height};
+      align: center,middle;
+    }
+	borders {
+      width: ${data.width + 64};
+      height: ${data.height + 64};
+      align: center,middle;
+	  bgcolor: #000000;
+	}
+  </style>
+  <!--<debug color="#000"/>-->	  
+  <box style="container">
+	<? if data.showborder then ?>
+	<img alt="LightboxOverlay" style="borders"/>
+	<? end ?>
+	<? if data.bgimage then ?>
+	<img src="${data.bgimage}"/>
+	<? end ?>
+	<box>
+		<? if data.showborder then ?>
+		<img alt="LightboxCloseAd" width="32" height="32" onclick="closeLightbox" />
+		<? end ?>
+		<box style="container">
+			<html careAboutNativeVisibility="0" url="${data.url}"/>
+		</box>
+	</box>
+  </box>
+</document>

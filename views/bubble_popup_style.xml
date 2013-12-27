@@ -1,0 +1,67 @@
+<style>
+description {
+  size: 11;
+  color: #000000;
+}
+header {
+  description;
+  bold: 1;
+}
+inbox-description {
+  description;
+  face: arial;
+  linespacing: 1.2;
+}
+inbox-header {
+  inbox-description;
+  header;
+  color: #767676;
+}
+button {
+  description;
+  color: #ffffff;
+  align: middle;
+}
+background {
+  margin: 7,5;
+}
+button-cancel {
+  size: 11;
+  color: #444;
+  text-shadow: #fff 0 1;
+  margin: 9,0,9,1;
+  align: center, middle;
+}
+button-cancel-disabled {
+  button-cancel;
+  color: #aaa;
+}
+button-ok {
+  button-cancel;
+  color: #fff;
+  text-shadow: #1a67a3 0 -1;
+}
+button-ok-disabled {
+  button-ok;
+  color: #aaa;
+}
+button-del {
+  button-ok;
+  color: #fff;
+  text-shadow: #9f2626 0 -1;
+}
+button-del-disabled {
+  button-del;
+  color: #aaa;
+}
+tutorial-title {
+  skinfont: TutorialPopupTitle;
+  align: center;
+}
+tutorial-subtitle {
+  skinfont: TutorialPopupTitle;
+  align: center;
+  bold: 0;
+  size: 13;
+}
+</style>

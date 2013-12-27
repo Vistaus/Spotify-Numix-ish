@@ -1,0 +1,5 @@
+<document>
+	<vbox minwidth="${data.width}">
+		<app uri="${data.uri}" id="header" height="${data.height}" />
+	</vbox>
+</document>

@@ -1,0 +1,150 @@
+<document>
+<?
+--[[
+generic_empty.xml: A generic empty playlist view.
+
+This view expects a table called "template", looking something like default_template below:
+
+--]]
+
+default_template = {
+	-- Icon and text
+	icon = nil,
+	text = nil,
+	subtext = nil,
+
+	-- Styles (defaults specified in generic_empty_style.xml)
+	icon_style = "icon-style",
+	text_style = "text-style",
+	subtext_style = "subtext-style",
+
+	-- Margins
+	text_margin = "0,47,0,0",
+	subtext_margin = "0,18,0,0",
+}
+
+-- Test data
+if next(data) == nil then
+	data = {
+	  type = 8
+	}
+end
+
+if data.type == 1 or data.type == 2 then
+	-- Album/Artist-browse view
+	template = {
+		text = function() ?>@{Empty browse description}<? end
+	}
+
+elseif data.type == 3 then
+	-- Playlist view
+	template = {
+		text = function() ?> @{Empty playlist description}<? end
+	}
+
+elseif data.type == 4 then
+	-- Toplist view
+	template = {
+		text = function() ?> @{Empty toplist description}<? end
+	}
+
+elseif data.type == 5 then
+	-- Local files view
+	template = {
+	  icon = "icons/localfiles-empty.png",
+	  text = function() ?>@{Play tracks by adding to <link url="spotify:config">Settings</link> description}<? end,
+	  subtext = function() ?>@{You can <link url="spotify:internal:devices">sync these tracks</link> with your device description}<? end,
+	}
+elseif data.type == 6 then
+	-- Purchase view
+	template = {
+		text = function() ?> @{Empty purchase view description}<? end
+	}
+
+elseif data.type == 7 then
+	-- Search view
+	template = {
+		text = function() ?> @{Empty search description}<? end
+	}
+
+elseif data.type == 8 then
+	-- Collection view
+	template = {
+		text = function() ?> @{Empty collection description}<? end
+	}
+
+elseif data.type == 9 then
+	-- Not Offline view
+	template = {
+		text = function() ?> @{Not available offline text}<? end
+	}
+
+elseif data.type == 10 then
+	-- Read only playlist view
+	template = {
+		text = function() ?> @{Empty readonly playlist description}<? end
+	}
+
+else
+	template = {}
+end
+
+-- Set some default values so that caller dont have to specify everything
+local function copy_missing_keys(dest, source)
+	-- Create a table with all keys from dest that does not want to be overridden
+	readonly_keys = {}
+	for key, value in pairs(dest) do
+		if value == "" then
+			readonly_keys[key] = true
+		end
+	end
+	-- Copy all missing keys/values from default_template to dest
+	for key, value in pairs(source) do
+		if value ~= "" and (not readonly_keys[key] and dest[key] == nil) then
+			dest[key] = value
+		end
+	end
+end
+
+copy_missing_keys(template, default_template)
+
+-- insert() is used on each value in template so that you can use functions in template
+local function insert(chunk)
+	if type(chunk) == "function" then
+		return chunk()
+	end
+	return chunk
+end
+
+local function is_set(table, property)
+	if table[property] ~= nil and table[property] ~= "" then
+		return true
+	end
+	return false
+end
+
+-- Include style sheet.
+include("views/generic_empty_style.xml")
+?>
+	<box>
+		<img src="bg_plaid.png" imagemode="tile" />
+		<img src="bg_top_highlight.png" imagemode="tilex" align="top" />
+		<img src="bg_bottom_shadow.png" imagemode="tilex" align="bottom" />
+
+		<vbox margin="45,35,45,45">
+			<box style="spacer-style"/>
+			<vbox>
+				% if is_set(template, "icon") then
+				<img src="${ insert(template.icon) }" style="${ insert(template.icon_style) }" />
+				% end
+				% if is_set(template, "text") then
+				<text margin="${ insert(template.text_margin) }" style="${ insert(template.text_style) }">${ insert(template.text) }</text>
+				% end
+				% if is_set(template, "subtext") then
+				<text margin="${ insert(template.subtext_margin) }" style="${ insert(template.subtext_style) }">${ insert(template.subtext) }</text>
+				%end
+			</vbox>
+			<box style="spacer-style; flex: 2"/>
+		</vbox>
+	</box>
+</document>

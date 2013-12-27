@@ -1,0 +1,48 @@
+<document>
+<!--  <style>
+    text { size: 18; face: arial; }
+    spacer { flex: 1; max-height: inf; }
+
+    empty-text { text; align:center; text-align:center; color:#111; text-shadow:#494949 0 1; }
+    empty-title { empty-text; bold:1; size:24; }
+    empty-description { 
+      empty-text; 
+      margin:0,15,0,0; 
+      maxwidth:500;
+      size: 18;
+      color: #808080;
+      face: arial;
+      text-shadow: #222 0 1;
+}
+
+    nosoc-icon { width:28; height:28; align:bottom; margin:0,0,9,3; }
+    nosoc-text { text; }
+    nosoc-title { nosoc-text; color:#fff; bold:1; size:30; text-shadow:#222 0 1; }
+    nosoc-description { nosoc-text; color:#aaa; text-shadow:#222 0 -1; margin:0,15,0,0; flex:1; maxwidth:500; }
+
+    startUsingButton {
+      size: 24;
+      height:66;
+      bold: true;
+      margin: 0,35,0,0;
+      face:arial;
+      text-shadow: #fff 0 1;
+      color:#1f1f1f;
+    }
+  </style> -->
+
+  <!-- <debug color="kaka"/> -->
+
+  <hbox bgcolor='#ecebe8'>
+  <box max-width='inf' />
+  <vbox width='256'>
+    <box flex='2' max-height='inf' />
+    <img src="search-glass.png" imagemode='cutout-native'/>
+    <box height='12' />
+    <text flex='1' text-align='center' face='arial' size='13' color='#707070' text-shadow='#fff 0 1'>@{Empty search description}</text>
+    <box flex='3' max-height='inf' />
+  </vbox>
+  <box max-width='inf' />
+  </hbox>
+
+</document>

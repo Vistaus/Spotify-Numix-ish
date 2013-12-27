@@ -1,0 +1,93 @@
+<style>
+  image {
+    image-mode: cutout;
+    margin: 0, 0, 12, 0;
+  }
+  textBaseLarge {
+    face:arial;
+    size:15;
+  }
+  textTitle {
+    textBaseLarge;
+    max-lines: 1;
+    bold:true;
+    color: #fff;
+    hoverlink-underline:0;
+    text-shadow:#222 0 1;
+  }
+  textAuthor {
+    textBaseLarge;
+    text-shadow:#222 0 1;
+    color: #888;
+  }
+  textAuthorLink {
+    textBaseLarge;
+    bold: 1;
+    color: #f0f;
+    link-color:#bbb;
+    text-shadow:#222 0 1;
+    hoverlink-color:#fff;
+    hoverlink-underline:0;
+  }
+  textDescription {
+    skinfont: InfoviewTextBody;
+    size:11;
+    text-shadow:#222 0 -1;
+	link-color:#fff;
+    hoverlink-color:#fff;
+    hoverlink-underline:1;
+    flex: 1;
+  }
+  textToolbarButton {
+    textBaseLarge;
+    color: #888;
+    text-shadow:#111 0 1;
+    align: left, middle;
+    margin: 0,0,8,0
+  }
+  textToolbarButtonHover {
+    textToolbarButton;
+    color: #fff;
+  }
+  textStats {
+    textBaseLarge;
+    color: #888;
+    text-shadow:#222 0 -1;
+  }
+  imageIcon {
+    margin:-2,0,2,0;
+    imagemode: native;
+    align: bottom;
+  }
+  imageDropdownArrow {
+    imagemode: native;
+    align: middle;
+    margin: 0,0,8,0
+  }
+  textAvailableOffline {
+    textBaseLarge;
+    color: #888;
+    text-shadow:#111 0 1;
+    align: middle;
+    margin: 8,0,5,0;
+  }
+  textAvailableOfflineHover {
+    textAvailableOffline;
+    color: #fff;
+  }
+  toggle {
+    face: arial;
+    size: 14;
+    bold: 1;
+    align:middle;
+    align:center;
+  }
+  toggleButton {
+    align:middle;
+    width:57;
+  }
+  filler {
+    flex: 1;
+    maxwidth: inf;
+  }
+</style>

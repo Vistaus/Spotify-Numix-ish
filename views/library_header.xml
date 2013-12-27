@@ -1,0 +1,75 @@
+<document>
+
+<?
+function makeTestData()
+  return {
+    profile = {
+      name = "Rasmus Andersson",
+      link = "spotify:user:test_1:playlist:4ULROLGBOmf691pPMzSE1B",
+      image_id = "aa2533b32332f732e0ab58b9a901185147723451",
+      num_public_playlists = 4711,
+      num_playlists = 0,
+      num_tracks = 1,
+      num_albums = 2,
+      num_artists = 3,
+      num_plays = 23838,
+    }
+  }
+end
+
+if not data.profile then
+  data = makeTestData()
+end
+?>
+
+  <style>
+    header_house_image {
+		width: 31;
+		height: 27;
+		margin: 0, 1, 0, 0;
+	}
+	h1 {
+		face: arial;
+		size: 30;
+		color: #eee;
+		text-shadow: #222 0 1;
+		bold: true;
+		margin: 10,-4,0,0;
+		face:arial;
+		text-shadow: #000 0 1;
+	}
+	desc {
+		margin: 15,4,10,0;
+		size: 11;
+		color: #808080;
+		face: tahoma;
+		text-shadow: #222 0 -1;
+		max-width: 320;
+		max-height: 30;
+		flex: 1;
+	}
+	stats {
+		skinfont: InfoViewPlaylistStats;
+		margin: 0,0,1,0;
+		text-shadow:#222 0 -1;
+		flex: 0;
+	}
+  </style>
+
+%--<debug color="kaka" />
+
+	<box bgcolor="#373737">
+		<vbox>
+			<hbox margin="12">
+				<hbox maxwidth="inf">
+					<img src="library-title_icon.png" shadow="0" style="header_house_image"></img>
+					<text style="h1">@{Library}</text>
+					<text style="desc">@{Library header desc}</text>
+				</hbox>
+				<hbox align="right" flex="1">
+					<text style="stats">@{Library header stats ${data.profile.num_albums} ${data.profile.num_playlists} ${data.profile.num_tracks}}</text>
+				</hbox>
+			</hbox>
+		</vbox>
+	</box>
+</document>

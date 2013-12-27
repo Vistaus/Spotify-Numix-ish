@@ -1,0 +1,14 @@
+<document>
+  <box bgcolor="#373737">
+	% if data.error then
+	  <img src="bg_plaid.png" imagemode="tile" />
+	  <img src="bg_top_highlight.png" imagemode="tilex" align="top" />
+	  <img src="bg_bottom_shadow.png" imagemode="tilex" align="bottom" />
+	  <img src="mr_bomb-dark-64.png" align="middle,center" />
+	% else
+      <scrollview maxheight="inf" maxwidth="inf">
+        <html bgcolor="#373737" class="external-web-page" url="${data.url}" clearCachedUrl="${data.clearCachedUrlIfFailed}" margin="0,0,0,0" open_links_internal="1"/>
+      </scrollview>
+	%end
+  </box>
+</document>

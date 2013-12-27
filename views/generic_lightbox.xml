@@ -1,0 +1,88 @@
+<%
+if next(data) == nil then
+  data = {
+    step_name = "facebook_permission",
+    can_close = false,
+    html = {
+      loading = false,
+      
+      -- below is step specific info
+      
+      url = "http://www.spotify.com/fr/legal/end-user-agreement/plain/",
+      width = 760,
+      height = 343
+    },
+    gracenote_eula = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lobortis dolor ac lacus lacinia bibendum. Suspendisse potenti. Nunc a ante eu sem bibendum hendrerit. Cras interdum ante vel dolor euismod vel ultricies sem scelerisque. Aliquam aliquet, dui non ullamcorper vehicula, lacus est hendrerit nisi, vitae tincidunt est enim sed velit. Integer turpis neque, imperdiet sagittis sagittis id, ornare quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce dictum tortor ac elit consectetur blandit. Duis sit amet nisi nisi, et convallis tellus. Donec porta magna id velit auctor varius.\n\nPraesent volutpat tincidunt consectetur. Curabitur tristique, odio ut blandit ornare, ipsum libero molestie mi, eu dictum orci lectus nec lectus. Nulla a elit felis, tempus lobortis massa. Ut pretium bibendum interdum. Nam lectus tortor, consequat eget consectetur sed, rhoncus sed nulla. Maecenas hendrerit egestas augue quis sollicitudin. Praesent tincidunt eros ac diam malesuada mollis. Vivamus fringilla neque quis ligula egestas a molestie justo aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam et metus nec velit cursus dignissim. Vestibulum a nibh id est adipiscing aliquam in quis dui. Vivamus ac justo et justo dignissim pharetra. Ut et aliquet libero. Duis quis nisl quam.\n\nDonec dictum hendrerit velit, ut dignissim arcu feugiat vel. Phasellus pharetra massa nec ipsum malesuada semper. Aenean sed elit erat, in tincidunt quam. Vivamus interdum auctor blandit. Aenean a mi sit amet mauris laoreet congue non id neque. Ut pretium lorem nec nibh tempus viverra. Proin a arcu quam, at dapibus justo. Ut dictum dui ac orci vestibulum vel consectetur enim venenatis. In eu sapien id mi interdum commodo. Vestibulum nec ligula mi, vitae faucibus nisl. Suspendisse potenti. Nam vitae nunc nisl, a adipiscing orci. Donec commodo, magna ac malesuada venenatis, ante quam congue neque, pretium pellentesque lorem lorem ullamcorper leo. Nunc lacinia mollis ultrices. Integer aliquet viverra ante id commodo. Nullam ultricies pretium convallis. Nulla arcu ligula, consectetur in dictum sit amet, sodales ut magna. Donec porttitor erat quis risus facilisis gravida nec nec nunc. Quisque ultricies feugiat augue vel mollis. Sed sed lacus sem, accumsan consequat nisi.\n\n\n\n      Mauris mi enim, tincidunt vitae fringilla id, tempus at urna. Ut porta, est eu gravida sollicitudin, odio nisl vulputate mauris, nec varius diam urna tincidunt felis. Duis sed justo lacus, vel ullamcorper diam. Etiam luctus convallis dolor at dapibus. Proin sodales ornare tortor, a fringilla diam ullamcorper ac. Etiam malesuada, erat non rutrum pulvinar, ipsum sapien ullamcorper mauris, at vestibulum eros sem a augue. Nunc dolor sem, porta in lobortis eu, gravida et nulla. Aliquam ultrices odio quis velit elementum eget lacinia sem tincidunt. Etiam vel ligula quam, nec consequat lorem. Sed imperdiet justo nec nisi sollicitudin vel malesuada risus ultricies. Vivamus porta consectetur enim ut aliquet. Pellentesque viverra mattis nunc eget pharetra. Vivamus arcu ligula, dapibus a tincidunt sit amet, condimentum semper nunc. Nulla accumsan condimentum mauris, sed accumsan magna vulputate vitae. Nunc rhoncus nulla eget nisi pulvinar quis cursus nibh porttitor. Duis pretium dui in leo mollis nec dictum est adipiscing.\n\n\n\n      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed id mollis libero. Proin rutrum facilisis facilisis. Mauris tempor, leo non imperdiet dapibus, nulla lorem bibendum mi, condimentum malesuada sapien eros in lorem. Suspendisse volutpat nibh feugiat odio ullamcorper tempus. Ut fringilla sagittis mi, non pharetra dolor rutrum ut. Vestibulum vitae libero libero, non laoreet orci. Sed sit amet egestas odio. Integer blandit tortor hendrerit dui dictum hendrerit. Curabitur lectus nulla, bibendum eu sagittis at, consequat quis diam. Sed lectus diam, laoreet et dapibus quis, mollis eu enim. Etiam arcu purus, eleifend in sollicitudin at, facilisis a augue. Aliquam tortor ante, euismod in venenatis eget, fringilla eu velit.",
+    highlight = {
+        x = -1,
+        y = 130,
+        height = -200,
+        width = 200
+    },
+
+    timed_out = false,
+    loaded = true
+}
+end
+
+if content == nil then
+  content = {}
+end
+
+if data.lightbox_width == nil and data.lightbox_height == nil then
+  data.lightbox_width = 760
+  data.lightbox_height = 343
+end
+
+close_dir = "right";
+if platform == "osx" then
+  close_dir = "left";
+end
+
+step = content[data.step_name]
+if step == nil then
+  step = {
+    title = function() %>${data.step_name}<% end,
+    content = function() %><text align="center,middle">STEP NOT FOUND!</text><%end,
+  }
+end
+%>
+
+%--<debug color="kaka"/>
+
+<box>
+  <!-- Use a background image, so it works on Wine -->
+  <? function printbg () ?><img src="lightbox.png" imagemode="stretch" /><? end ?>
+  % if data.highlight then
+  <vbox flex="1">
+      <box height="${data.highlight.y}" flex="1"><? printbg() ?></box>
+      <hbox flex="1" <? if data.highlight.height < 0 then print("maxheight=\"inf\"") end ?> >
+          <box <? if data.highlight.x >= 0 then print("width=\"" .. data.highlight.x .. "\"") else print("maxwidth=\"inf\"") end ?> flex="1"><? printbg() ?></box>
+          <img animDelay="80" alt="LightboxOverlayHighLight" flex="1" <? if data.highlight.height >= 0 then print("height=\"" .. data.highlight.height .. "\"") end ?> width="${data.highlight.width}"/>
+          <box <? if data.highlight.x < 0 then print("width=\"" .. -1*data.highlight.x - 1 .. "\"") else print("maxwidth=\"inf\"") end ?>  flex="1"><? printbg() ?></box>
+      </hbox>
+      <box <? if data.highlight.height < 0 then print("height=\"" .. -1*data.highlight.height - 1 .. "\"") else print("maxheight=\"inf\"") end ?> flex="1"><? printbg() ?></box>
+  </vbox>
+  % elseif not data.fullscreen then
+      % if data.margin then
+        <box margin="0,${data.margin.top},0,${data.margin.bottom}" maxheight="inf" maxwidth="inf" flex="1"><? printbg() ?></box>
+      % else
+        <box maxheight="inf" maxwidth="inf" flex="1"><? printbg() ?></box>
+      % end
+  % end
+
+  % if data.fullscreen and data.margin then
+  <box>
+    <box margin="0,${data.margin.top},0,${data.margin.bottom}" bgcolor="#000000" boxflags="no-overflow">
+      % step.content()
+    </box>
+  </box>
+  % else
+  %-- The "box"
+  <box height="0" width="0" margin="0,0,0,0">
+    <box width="${data.lightbox_width}" height="${data.lightbox_height}" bgcolor="#fff">
+      % step.content()
+    </box>
+  </box>
+  % end
+</box>

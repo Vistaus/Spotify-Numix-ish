@@ -1,0 +1,31 @@
+<document>
+<box>
+  <vbox>
+    <box align="top">
+      <text style="size:15; color:#605f5e" align="center">@{Installing components}</text>
+    </box>
+    % if data.track_name ~= "" then
+    <box align="bottom">
+      <hbox align="bottom" margin="10,60,10,10" maxheight="inf">
+        <box align="center,bottom">
+          <img src="${data.image}" alt="PlaceholderTrack|64" width="64" height="64" shadow="1" />
+          % overlay = "LoginPlayOverlay"
+          % if not data.pause then
+          % overlay = "LoginPauseOverlay"
+          % end
+          <deck mouseoffsets="2,1,2" onclick="playpause" width="64" height="64">
+           <box></box>
+            <img alt="${overlay}|mouseover" align="center,middle"/>
+            <img alt="${overlay}|mousedown" align="center,middle"/>
+          </deck>
+        </box>
+        <vbox margin="10,0,0,0" align="left,middle">
+          <text>${data.track_name}</text>
+          <text>${data.artist_name}</text>
+        </vbox>
+      </hbox>
+	</box>
+    % end
+  </vbox>
+</box>
+</document>

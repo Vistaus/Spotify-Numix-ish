@@ -1,0 +1,61 @@
+<%
+-- This page uses generic_header.xml.
+
+inbox_stats = function()
+%>@{Playlist stats tracks ${data.tracks}}, ${ formatduration(data.time) }<%
+end
+
+inbox_capacity = function()
+  if data.inboxFull then
+    toolbarbutton("ViewToolbarWarningButton", function() %>@{InboxFull}<% end, "clearInbox")
+  elseif data.inboxAlmostFull then
+    toolbarbutton("ViewToolbarWarningButton", function() %>@{InboxAlmostFull}<% end, "clearInbox")
+  end
+end
+
+inbox_filter = function()
+  if data.inbox_filter_text then
+    toolbardropdown("ViewToolbarFilterButton", function() %>@{Filter button text} (${data.inbox_filter_text})<% end, "filter")
+  else
+    toolbardropdown("ViewToolbarFilterButton", function() %>@{Filter button text}<% end, "filter")
+  end
+end
+
+inbox_desc = function()
+%>@{Inbox header desc}<%
+end
+
+template = {
+  icon = "SidebarRowIcon|inbox",
+  title = function()?>@{Inbox title}<?end,
+  title_link = data.link,
+  stats = inbox_stats,
+  offline_available = data.offline_available,
+  purchase = {
+    tracks = data.purchase_tracks,
+	price = data.purchase_price,
+	page = data.purchase_page,
+	verb = data.purchase_verb,
+  },
+  title_items = {
+    "standard_title",
+    "filler",
+    "stats",
+  },
+  toolbar_items = {
+    inbox_filter,
+  },
+  description = inbox_desc
+}
+
+if data.inboxFull or data.inboxAlmostFull then
+  table.insert(template.toolbar_items, inbox_capacity)
+end
+table.insert(template.toolbar_items, "filler")
+if data.can_purchase then
+  table.insert(template.toolbar_items, "purchase")
+end
+
+include("views/generic_header.xml")
+
+%>

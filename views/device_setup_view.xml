@@ -1,0 +1,27 @@
+<document>
+	<% include("views/intro_style.xml") %>
+	<style>
+ 
+ 	</style>
+	%-- <debug color="1" />
+	<box>
+		<img src="bg_plaid.png" imagemode="tile" />
+		<img src="bg_top_highlight.png" imagemode="tilex" align="top" />
+		<img src="bg_bottom_shadow.png" imagemode="tilex" align="bottom "/>
+		<vbox maxheight="inf">
+			<text margin="15,60,15,0" style="header1" align="center">@{Your iPod needs to be set up}</text>
+			<text margin="15,0,15,20" style="description1" align="center">@{To sync with Spotify please set up your iPod in iTunes}</text>
+			<box maxheight="inf" flex="2" />
+			<hbox align="center">
+				<!-- Some careful boxes and flexing here to make the entire thing be centered when
+				everything is visible, yet it degenerates properly when the window is small. -->
+				<box maxwidth="128" flex="128"/>
+					<img src="devices/restore-itunes.png" imagemode="native" align="middle" margin="-128,-40,0,0" />
+					<img src="devices/restore-arrow.png" imagemode="native" align="middle" margin="-50,-40,0,0" />
+					<img src="devices/setup-screenshot.png" imagemode="native" align="middle" margin="10,-30,-240,0"/>
+				<box maxwidth="256" flex="256"/>
+			</hbox>
+			<box maxheight="inf" flex="3" />
+		</vbox>
+	</box>
+</document>

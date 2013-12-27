@@ -1,0 +1,38 @@
+<?
+-- This page uses generic_header.xml.
+
+localfiles_stats = function()
+?>
+@{Local music stats ${data.tracks} ${formatduration(data.time)} ${formatfilesize(data.size)}}
+<?
+end
+
+gracenote_logo = function()
+?>
+<img src="local_files-gracenote.png" shadow="0" style="width: 68; height: 22; margin:5,0,8,0; align: middle;" />
+<?
+end
+
+get_description = function()
+?>
+@{Music <link url="spotify:config">from your computer</link> that you can <link url="spotify:internal:devices">sync</link> to your device description}
+<?
+end
+
+template = {
+  icon = "SidebarRowIcon|lfiles",
+  title = function() ?>@{Local music}<? end,
+  stats = localfiles_stats,
+  description = get_description,
+  title_items = {
+    "standard_title",
+    "filler",
+    "stats",
+  },
+  toolbar_items = {
+  },
+}
+
+include("views/generic_header.xml")
+
+?>

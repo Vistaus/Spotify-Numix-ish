@@ -1,0 +1,12 @@
+<%
+	function orderButtons(defaultish, cancelish)
+		if platform == "win" then
+			defaultish()
+			cancelish()
+		else
+			cancelish()
+			defaultish()
+		end
+	end
+
+%>

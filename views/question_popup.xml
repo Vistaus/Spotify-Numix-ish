@@ -1,0 +1,69 @@
+<document>
+<?
+
+include("views/bubble_popup_style.xml")
+
+if not data.type then
+  data.type = "purgeinbox"
+end
+
+_delete = false
+
+if data.type == "deleteplaylist" then
+  description = function() ?>@{question popup delete playlist}<? end
+  ok_text = function() ?>@{question popup delete}<? end
+  cancel_text = function() ?>@{question popup keep}<? end
+  _delete = true
+elseif data.type == "deletefolder" then
+  description = function() ?>@{question popup delete folder}<? end
+  ok_text = function() ?>@{question popup delete}<? end
+  cancel_text = function() ?>@{question popup keep}<? end
+  _delete = true
+elseif data.type == "deletefolder_recursive" then
+  description = function() ?>@{question popup delete folder recursive}<? end
+  ok_text = function() ?>@{question popup delete}<? end
+  cancel_text = function() ?>@{question popup keep}<? end
+  _delete = true
+elseif data.type == "removeplaylist" then
+  description = function() ?>@{question popup unsubscribe playlist}<? end
+  ok_text = function() ?>@{question popup unsubscribe}<? end
+  cancel_text = function() ?>@{question popup keep}<? end
+elseif data.type == "removeperson" then
+  description = function() ?>@{question popup remove person}<? end
+  ok_text = function() ?>@{question popup remove}<? end
+  cancel_text = function() ?>@{question popup keep}<? end
+  _delete = true
+elseif data.type == "purgeinbox" then
+  description = function() ?>@{question popup purge inbox}<? end
+  ok_text = function() ?>@{question popup yes}<? end
+  cancel_text = function() ?>@{question popup no}<? end
+end
+
+?>
+
+  %--<debug color="kaka" />
+
+  <box>
+    <vbox width="230" style="background">
+      <text style="description; flex:1">${description()}</text>
+      <flow rowspacing="4" colspacing="9" margin="0,5,0,0">
+        <box maxwidth="inf" />
+        % function insert_ok_cancel_button(text, action, icon, style)
+        <deck mouseoffsets="1" onclick="${action}">
+          <box><img alt="HeadBarButton|${icon}" edges="0,9" /><text style="${style}">${text()}</text></box>
+          <box><img alt="HeadBarButton|${icon},mousedown" edges="0,9" /><text style="${style}">${text()}</text></box>
+        </deck>
+        % end
+        <?
+        if platform == "win" then
+          insert_ok_cancel_button(function() ok_text() end, "ok", _delete and "popindel" or "popin", "button-ok");
+          insert_ok_cancel_button(function() cancel_text() end, "cancel", "", "button-cancel");
+        else
+          insert_ok_cancel_button(function() cancel_text() end, "cancel", "", "button-cancel");
+          insert_ok_cancel_button(function() ok_text() end, "ok", _delete and "popindel" or "popin", "button-ok");
+        end
+        ?>
+      </flow>
+    </vbox>
+  </box>
+</document>

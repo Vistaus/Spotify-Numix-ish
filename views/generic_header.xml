@@ -1,0 +1,260 @@
+<document>
+<% --[[
+generic_header.xml: A generic playlist view header.
+
+This template expects a table called "template", looking something like the following:
+
+template = {
+  image = data.image,
+  shadow = "rounded", -- or 'box' or 'none'; default box
+  image_alt = "PlaceholderPlaylist|128",
+  image_size = 128,
+  icon = "SidebarRowIcon|list",
+  title = data.name,
+  title_link = data.link,
+  stats = playlist_stats,
+  description = data.text,
+  offline_available = data.playlist_offline_available,
+  title_items = {
+    "standard_title",
+    "filler",
+    "stats",
+    editable_icon,
+  },
+  toolbar_items = {
+    "share",
+  },
+}
+
+Any of the singular elements may be a function that instead returns a string (see also the insert()-function
+below). Use this to get translated strings, as can be seen in e.g. playlist_header.xml.
+
+Array tables like title_items and toolbar_items should contain either arguments as above, or one of several
+predefined strings that cause standard elements to be inserted: see the source below for the strings. These
+standard elements may use template arguments from the template table.
+
+]]
+
+-- Use this everywhere a templated chunk is inserted. That way, we can supply normal types as well as functions.
+function insert(chunk)
+  if type(chunk) == "function" then
+    return chunk()
+  end
+  return chunk
+end
+
+-- Include style sheet.
+include("views/generic_header_style.xml")
+
+%>
+
+  <!-- debug color="kaka" /-->
+  <box bgcolor="#373737">
+    <hbox minWidth="300" margin="12,9,12,12">
+      <!-- Big image -->
+      % if template.image or template.image_alt then
+      <?if template.image_link then ?><link url="${template.image_link}"><? end ?>
+      <?  if not template.image_size then template.image_size = 128 end ?>
+	  <box>
+		<img src="${ insert(template.image) }" alt="${ insert(template.image_alt) }" style="image" width="${template.image_size}" height="${template.image_size}" <?if not insert(template.shadow) or insert(template.shadow) == "box" then ?>shadow="1"<? end ?>/>
+		<? if insert(template.shadow) == "rounded" then ?>
+			<img class="playlist_shadow" src="skin:RoundedCornersShadowHighlight" width="${template.image_size+8}" height="${template.image_size+8}" margin="-4,-3,-4,-5"/>
+		<? end ?>
+	  </box>
+      <?if template.image_link then ?></link><? end ?>
+      % end
+      <!-- Middle part -->
+      <vbox flex="100">
+        <!-- Title -->
+        <hbox>
+          % for i, item in ipairs(template.title_items) do
+          %   if item == "standard_title" then
+          %     if template.icon then
+          <img alt="${ insert(template.icon) }" style="imageIcon" />
+          %     end
+          <text style="textTitle" flex="100"><link url="${ insert(template.title_link) }">${ insert(template.title) }</link></text>
+          %     if template.author then
+          <text style="textAuthor"> @{Generic by <link style="textAuthorLink" url="${ insert(template.author_link) }">${ insert(template.author) }</link>}</text>
+          %     end
+          %   elseif item == "filler" then
+          <box style="filler" />
+          %   elseif item == "stats" then
+          %     if template.stats then
+          <text maxwidth="inf" style="textStats" margin="0,1,0,0">${ insert(template.stats) }</text>
+          %     end
+          %   else
+          ${ insert(item) }
+          %   end
+          % end
+        </hbox>
+        <!-- Bar -->
+		<%
+        num_toolbar_items = #template.toolbar_items
+		if num_toolbar_items > 0 then
+		%>
+        <box margin="-2,4,-1,0" minwidth="200">
+          <!-- Background -->
+          <hbox margin="-6,0,-6,0" >
+            <img alt="ViewToolbarBgLeft" />
+            <img alt="ViewToolbarBgCenter" flex="1" maxwidth="inf" />
+            <img alt="ViewToolbarBgRight" />
+          </hbox>
+          <!-- Buttons -->
+          <hbox margin="-3,0,-2,0" >
+            <%
+            function toolbarbutton(image, label, onclick)
+              %>
+              <deck onClick="${onclick}" mouseOffsets="1,2">
+                <hbox><img alt="${image}"           /><text style="textToolbarButton">${ insert(label) }</text></hbox>
+                <hbox><img alt="${image}|mousedown" /><text style="textToolbarButton">${ insert(label) }</text></hbox>
+                <hbox><img alt="${image}|mouseover" /><text style="textToolbarButtonHover">${ insert(label) }</text></hbox>
+              </deck>
+              <%
+            end
+
+            function toolbardropdown(image, label, onmousedown)
+              %>
+              <deck onMouseDown="${onmousedown}" mouseOffsets="1,2">
+                <hbox><img alt="${image}"           /><text style="textToolbarButton" margin="0">${ insert(label) } </text><img style="imageDropdownArrow" alt="ViewToolbarDisclosureIndicator" /></hbox>
+                <hbox><img alt="${image}|mousedown" /><text style="textToolbarButton" margin="0">${ insert(label) } </text><img style="imageDropdownArrow" alt="ViewToolbarDisclosureIndicator" /></hbox>
+                <hbox><img alt="${image}|mouseover" /><text style="textToolbarButtonHover" margin="0">${ insert(label) } </text><img style="imageDropdownArrow" alt="ViewToolbarDisclosureIndicator|down" /></hbox>
+              </deck>
+              <%
+            end
+
+            function toolbardropdownsharebutton(label, enabled)
+              if enabled then
+              %>
+              <deck onMouseDown="share" mouseOffsets="1,2">
+                <hbox>
+                  <img alt="ViewToolbarShareButton"/><text style="textToolbarButton" margin="0">${ insert(label) } </text>
+                  <img style="imageDropdownArrow" alt="ViewToolbarDisclosureIndicator" />
+                </hbox>
+                <hbox>
+                  <img alt="ViewToolbarShareButton|mousedown" /><text style="textToolbarButton" margin="0">${ insert(label) } </text>
+                  <img style="imageDropdownArrow" alt="ViewToolbarDisclosureIndicator" />
+                </hbox>
+                <hbox>
+                  <img alt="ViewToolbarShareButton|mouseover" /><text style="textToolbarButtonHover" margin="0">${ insert(label) } </text>
+                  <img style="imageDropdownArrow" alt="ViewToolbarDisclosureIndicator|down" />
+                </hbox>
+              </deck>
+              <%
+              else
+              %>
+                <hbox>
+                  <img alt="ViewToolbarShareButton"/>
+                  <text style="textToolbarButton" margin="0">${ insert(label) } </text>
+                  <img style="imageDropdownArrow" alt="ViewToolbarDisclosureIndicator" />
+                </hbox>
+              <%
+              end
+            end
+
+
+            for i, item in ipairs(template.toolbar_items) do
+              if i > 1 then
+                %>
+                <img src="view-toolbar-divider.png" />
+                <%
+              end
+              if item == "filler" then
+                -- The -2 here makes the divider to the right fold under the left divider if this is zero-width
+                %>
+                <box style="filler" margin="0,0,-2,0"/>
+                <%
+              elseif item == "share" then
+                toolbardropdownsharebutton(function() %>@{Share toolbar button}<% end, not template.offline)
+              elseif item == "star" then
+                toolbarbutton("ViewToolbarStarButton", function() %>@{Star toolbar button}<% end, "star")
+              elseif item == "artist_radio" then
+                toolbarbutton("ViewToolbarRadioButton", function() %>@{Radio toolbar button}<% end, "artist_radio")
+              elseif item == "playlist_radio" then
+                toolbarbutton("ViewToolbarRadioButton", function() %>@{Radio playlist toolbar button}<% end, "playlist_radio")
+              elseif item == "purchase" then
+			    %>
+                <deck height="33" page="${insert(template.purchase.page)}" id="-1">
+                  <hbox>
+				  <%
+                    purchase_verb = function() %>@{Purchase toolbar button get}<% end
+                    if template.purchase.verb then
+                      purchase_verb = function() %>@{Purchase toolbar buy}<% end
+                    end
+                    toolbarbutton("ViewToolbarPurchaseButton", purchase_verb, "purchase")
+                  %>
+                  </hbox>
+                  <hbox>
+				  <%
+                  purchase_verb = function() %>@{Purchase toolbar get x for ${insert(template.purchase.tracks)}} <% end
+                  if template.purchase.verb then
+                    purchase_verb = function() %>@{Purchase toolbar buy x for ${insert(template.purchase.tracks)}} <% end
+                  end
+                  %>
+                  <deck onClick="confirm_purchase" mouseOffsets="1,2">
+                    <hbox><text style="textToolbarButton" margin="8,0,0,0"><% purchase_verb()%></text> <img alt="ViewToolbarPurchaseButton"/> <text style="textToolbarButton">${insert(template.purchase.price)}</text></hbox>
+                    <hbox><text style="textToolbarButton" margin="8,0,0,0"><% purchase_verb()%></text> <img alt="ViewToolbarPurchaseButton|mousedown" /> <text style="textToolbarButton">${insert(template.purchase.price)}</text></hbox>
+                    <hbox><text style="textToolbarButtonHover" margin="8,0,0,0"><% purchase_verb()%></text> <img alt="ViewToolbarPurchaseButton|mouseover" /> <text style="textToolbarButtonHover">${insert(template.purchase.price)}</text></hbox>
+                  </deck>
+				  </hbox>
+				  <hbox align="right">
+                  <img alt="OfflineIndicators|down" animdelay="80" imagemode="native" align="middle" />
+                  </hbox>
+                  <hbox align="right">
+                  <img alt="OfflineIndicators|waiting" align="middle" />
+                  </hbox>
+				</deck>
+				<%
+              elseif item == "subscribe" then
+                toolbarbutton("ViewToolbarSubscribeButton", function() %>@{Subscribe toolbar button}<% end, "subscribe")
+              elseif item == "unsubscribe" then
+                toolbarbutton("ViewToolbarUnsubscribeButton", function() %>@{Unsubscribe toolbar button}<% end, "unsubscribe")
+              elseif item == "available_offline" then
+                deck_index = template.offline_available and 1 or 0
+                %>
+                <deck height="33"  margin="0,0,2,0" onclick="available_offline" id="-1" page="${deck_index}" mouseOffsets="0,2">
+                  <hbox>
+                    <text style="textAvailableOffline">@{Available offline}</text>
+                    <img alt="ToggleButton|off" style="toggleButton" flex="1" />
+                  </hbox>
+                  <hbox>
+                    <text style="textAvailableOffline">@{Available offline}</text>
+                    <img alt="ToggleButton" style="toggleButton" flex="1" />
+                  </hbox>
+                  <hbox>
+                    <text style="textAvailableOfflineHover">@{Available offline}</text>
+                    <img alt="ToggleButton|off" style="toggleButton" flex="1" />
+                  </hbox>
+                  <hbox>
+                    <text style="textAvailableOfflineHover">@{Available offline}</text>
+                    <img alt="ToggleButton" style="toggleButton" flex="1" />
+                  </hbox>
+                </deck>
+                <%
+              else
+                %>
+                ${ insert(item) }
+                <%
+              end
+              if i == 1 and num_toolbar_items == 1 then
+                -- If there is only one item, we add a terminating vertical rule.
+                %><img src="view-toolbar-divider.png" /><%
+              end
+            end
+            %>
+          </hbox>
+        </box>
+		% end
+        <!-- Description -->
+        % if template.description then
+        <text style="textDescription; max-lines: 4; margin: 0,5,0,0">${ insert(template.description) }</text>
+        % end
+      </vbox>
+      % if template.right_items then
+      %   for i, item in ipairs(template.right_items) do
+      <img src="view-section-divider-v.png" margin="12,-12,12,-12" />
+      ${ insert(item) }
+      %   end
+      % end
+    </hbox>
+  </box>
+</document>

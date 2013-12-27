@@ -1,0 +1,122 @@
+<document>
+	<% include("views/intro_style.xml") %>
+	<style>
+	<%
+		if next(data) == nil then
+			data = {
+				buttons = {
+					{ name="Johan's Ipod is a very long string", type="ipod" },
+					{ name="nevyn's", type="spotifymobile" },
+					{ name="Johan's awesome iPod", type="ipod" },
+				}
+			}
+		end
+	%>
+	nameOrTypeText {
+		color: #fff;
+		bold: 1;
+		size: 16;
+	}
+	unconnectedHelpText {
+		color: #ccc;
+		bold: 0;
+		size: 12;
+
+	}
+	connectedText {
+		color: #ccc;
+		bold: 1;
+		size: 12;
+	}
+	</style>
+	%--<debug color="1" />
+	<box>
+		<img src="bg_plaid.png" imagemode="tile" />
+		<img src="bg_top_highlight.png" imagemode="tilex" align="top" />
+		<img src="bg_bottom_shadow.png" imagemode="tilex" align="bottom" />
+		<vbox maxheight="inf" margin="15,0">
+			<text margin="15,70,15,60" style="header1" align="center">@{device section header}</text>
+
+			% count_ipod = 0
+			% count_mobile = 0
+			% for i, b in ipairs(data.buttons) do
+				% if b.type == "ipod" then
+					% count_ipod = count_ipod + 1
+				% end
+				% if b.type == "spotifymobile" then
+					% count_mobile = count_mobile + 1
+				% end
+			% end
+
+			% function printButton(type, name, placeholder, index)
+				% if placeholder then
+					<box margin="0,0,0,20">
+				% else
+					<box margin="0,0,0,20" onClick="gotoDevice${index}">
+				% end
+						<img src="devices/badge.png" edges="10,10,10,10" align="middle" padding="0,0,0,0" width="570" height="90" />
+						<vbox align="middle">
+							<hbox>
+				% if placeholder then
+					% if type == "ipod" then
+								<hbox width="140" maxwidth="140">
+									<img src="devices/usb.png" height="24" align="middle" margin="1,0,0,0" />
+									<box align="middle">
+										<text style="nameOrTypeText; text-align: right" margin="0,0,0,0" flex="1" maxwidth="inf">iPod</text>
+									</box>
+								</hbox>
+								<box maxwidth="420">
+									<text style="unconnectedHelpText" align="middle" margin="24,0,0,0" flex="1">@{device section ipod help}</text>
+								</box>
+					% else
+								<hbox width="140" maxwidth="140">
+									<img src="devices/wifi.png" height="30" align="middle" margin="12,0,0,0" />
+									<box align="middle">
+										<text style="nameOrTypeText; text-align: right" margin="0,0,0,0" flex="1" maxwidth="inf">iPhone &amp; Android</text>
+									</box>
+								</hbox>
+								<box maxwidth="420">
+									% if data.isPremium then
+										<text style="unconnectedHelpText" align="middle" margin="24,0,10,0" flex="1">@{device section mobile <link style="color: #fff; bold:1" url="http://itunes.com/app/spotify">iPhone URL</link> <link style="color: #fff; bold:1" url="http://market.android.com/details?id=com.spotify.mobile.android.ui">Android URL</link> help premium}</text>
+									% else
+										<text style="unconnectedHelpText" align="middle" margin="24,0,10,0" flex="1">@{device section mobile <link style="color: #fff; bold:1" url="http://itunes.com/app/spotify">iPhone URL</link> <link style="color: #fff; bold:1" url="http://market.android.com/details?id=com.spotify.mobile.android.ui">Android URL</link> help free}</text>
+									% end
+								</box>
+					% end
+				% else
+								<vbox width="570">
+									<text style="nameOrTypeText" align="center">${name}</text>
+									<text style="connectedText" align="center">@{device section connected}</text>
+								</vbox>
+				% end
+							</hbox>
+						</vbox>
+					</box>
+			% end
+
+			<box align="center">
+				<vbox margin="0,20,0,30" minwidth="150" align="center">
+					% if count_ipod == 0 then
+						% printButton("ipod", "", true, 0)
+					% else
+						% for i, b in ipairs(data.buttons) do
+							% if b.type == "ipod" then
+								% printButton(b.type, b.name, false, i)
+							% end
+						% end
+					% end
+
+					% if count_mobile == 0 then
+						% printButton("spotifymobile", "", true, 0)
+					% else
+						% for i, b in ipairs(data.buttons) do
+							% if b.type == "spotifymobile" then
+								% printButton(b.type, b.name, false, i)
+							% end
+						% end
+					% end
+				</vbox>
+			</box>
+		</vbox>
+	</box>
+</document>

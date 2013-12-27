@@ -1,0 +1,20 @@
+<document>
+	<% include("views/intro_style.xml") %>
+	<style>
+
+	</style>
+	%--<debug color="1" />
+	<box>
+		<img src="bg_plaid.png" imagemode="tile" />
+		<img src="bg_top_highlight.png" imagemode="tilex" align="top" />
+		<img src="bg_bottom_shadow.png" imagemode="tilex" align="bottom "/>
+		<vbox maxheight="inf">
+			<box maxheight="inf" flex="2" />
+			<vbox align="center" maxheight="inf" margin="15,0">
+			    <text align="center" style="header1">This device can only be synced over Wi-Fi</text>
+			    <text style="description1">Connect your device to the same network as this computer to start syncing tracks</text>
+			</vbox>
+			<box maxheight="inf" flex="3" />
+		</vbox>
+	</box>
+</document>

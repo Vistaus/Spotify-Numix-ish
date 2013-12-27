@@ -1,0 +1,376 @@
+<document>
+
+<%
+if next(data) == nil then
+	data = {
+		type = "ipod"
+	}
+end
+%>
+<? include("views/generic_header_style.xml") ?>
+
+	<style>
+		titleText { flex: 1; size: 12; face: arial; bold: 1; color: #fff; text-shadow: #222 0 1; max-lines: 1; }
+		playlistTitle { titleText; }
+		playlistImageSmall { width: 128; height: 128; image-mode: cutout; }
+		playlistSmall { size: 9; color: #888; max-lines: 1; margin: 0,3,0,0; text-shadow: #222 0 -1; flex: 1; }
+		headerCheckbox { imagemode: native; align:middle }
+		highlightColor { bgcolor: #8000; }
+		textRadio { playlistTitle; align: middle; color:#ddd }
+		textRadioHover { textRadio; color:#fff }
+		textPlaylistBar { face: arial; size: 14; bold: 1; color: #d7d7d7; textshadow: #424242 0 -1; }
+		textGoToButton { face: arial; size: 10; color: #fff; align: center,middle; margin: 8,0,20,0; maxlines: 1; flex: 1; }
+		textPlaylistStatus { face: tahoma; size: 11; text-shadow: #111 0 -1; color: #999; margin:0,1,0,0; }
+		textGetMore { face: tahoma; size: 11; text-shadow: #616161 0 -1; color: #fff; margin:0,1,0,0; }
+		syncIntro { face: arial; color:#c1c1c1; text-shadow: #000 0 1; text-align:center }
+		linkLearnMore { linkunderline: 1; }
+		backupHeaderButton { size: 24; height:58; bold: 1; align: center; margin: 0,15,0,15; face:arial; color:#fff; }
+		backupHeader { size: 24; bold: 1; align: center; face:arial; color:#cdcdcd; }
+		backupHeaderMultiLine { size: 24; linespacing:1.30; bold: 1; align: center; face:arial; color:#cdcdcd; }
+		backupText { size: 13; linespacing:1.30; bold: 0; align: center; face:tahoma; color:#c8c8c8; }
+		backupText2 { size: 12; linespacing:1.30; bold: 0; align: center; face:tahoma; color:#747474; }
+		performingBackupTextLight { size: 13; bold: 0; align: center; face:tahoma; color:#c8c8c8; }
+		performingBackupTextDark { size: 13; bold: 0; align: center; face:tahoma; color:#747474; }
+		backupButtonTextBase { size: 12; height:25; align: center; bold: 0; align: center; face:arial; }
+		backupButtonTextDark { backupButtonTextBase; color:#404040; }
+		backupButtonTextLight { backupButtonTextBase; color:#fff; }
+		backupButtonTextLight2 { backupButtonTextBase; color:#747474; }
+		backupSelectDirText { size: 13; bold: 0; align: center; face:tahoma; color:#c8c8c8; }
+		backupSelectDirText2 { size: 13; bold: 0; align: center; face:tahoma; color:#c8c8c8; }
+		backupSelectDirTextHover { backupSelectDirText; bold: 1; }
+		backupSelectDirTextHoverClick { backupSelectDirTextHover; color:#ddd; }
+		backupButtons { size: 12; height:21; align: center; margin: 5,10,5,0; face:arial; color:#222; }
+		textPlaylistStatus { face: tahoma; size: 11; text-shadow: #111 0 -1; color: #999; margin:0,1,0,0; }
+	</style>
+
+%--<debug color="kaka" />
+
+<box>
+	<vbox>
+		<!-- Title -->
+		<box background="bg_plaid-list.png" backgroundrepeat="x" maxheight="55">
+			<hbox margin="20">
+				<text id="device_name" style="textTitle" margin="0,-3,0,0" flex="100">Dummy device name</text>
+				<text id="device_stats_left" class="readyonly" maxwidth="inf" style="textStats; min-width: 90; text-align: right; size: 11" margin="40,0,0,0">Dummy size filled!</text>
+				<!-- Progress bar -->
+				<!-- We do not have fractional widths, so the progress bar elements
+				each have a counterbox. The flex-properties are set from c++ to 
+				give the proper fractional widths to the bars. -->
+				<box margin="7,0,7,0" height="14" class="readyonly" flex="1" minwidth="100">
+					<img src="devices/progress-bg.png" margin="0,1,0,2" imagemode="tilex" />
+					<hbox>
+						<img src="devices/progress-syncing.png" margin="0,1,0,2" imagemode="tilex" id="progress_pending" animPixels="13" animDelay="50" style="filler" flex="2"/>
+						<box id="progress_pending_counterbox" style="filler" flex="1"/>
+					</hbox>
+					<hbox>
+						<img src="devices/progress-filled.png" margin="0,1,0,2" imagemode="tilex" id="progress_full" style="filler" flex="1"/>
+						<box  id="progress_full_counterbox" style="filler" flex="2"/>
+					</hbox>
+					<img src="devices/progress-corners.png" edges="6,0"/>
+				</box>
+				<img id="device_stats_right_tracks_not_synced_bullet" src="tracks-not-synced-bullet.png" margin="-4,1,2,4"/>
+				<text id="device_stats_right" class="readyonly" maxwidth="inf" style="textStats; size: 11" margin="0,0,0,0">Dummy size left!</text>
+			</hbox>
+		</box>
+
+		<scrollview id="scroll">
+			<box bgcolor="#373737">
+				<img src="bg_plaid.png" imagemode="tile" />
+				<img src="bg_top_highlight.png" imagemode="tilex" align="top" />
+				<img src="bg_bottom_shadow.png" imagemode="tilex" align="bottom" />
+				<vbox maxheight="inf">
+
+					<!-- Radio button area - always visible -->
+					<hbox margin="19,17,20,20" minwidth="200">
+						<!-- Buttons -->
+						% function radiobutton(id, label, action)
+						% 	pagepairs = {{"", "textRadio"}, {"", "textRadioHover"}, {"mousedown", "textRadioHover"}}
+						<deck id="${id}" mouseoffsets="2,1" onclick="${action}">
+						% 	for _, pair in ipairs(pagepairs) do
+							<hbox>
+								<img alt="SettingsRadioButton|${pair[1]}" style="headerCheckbox"/>
+								<text style="${pair[2]}" margin="5,0">${label}</text>
+							</hbox>
+						% 	end
+						% 	for _, pair in ipairs(pagepairs) do
+							<hbox>
+								<img alt="SettingsRadioButton|down,${pair[1]}" style="headerCheckbox"/>
+								<text style="${pair[2]}" margin="5,0">${label}</text>
+							</hbox>
+						% 	end
+							</deck>
+						% end
+						<? sync_all_copy = {
+							ipod = "sync all local ipod",
+							spotifymobile = "sync all local spotifymobile",
+						}?>
+						% radiobutton("sync_all_radio", trans(sync_all_copy[data.type]), "syncAll")
+						<box width="30" />
+						% radiobutton("sync_selected_radio", trans("sync selected"), "syncSelected")
+					</hbox>
+
+					<!-- Header bar -->
+					<box>
+						<img src="mainlist-section-header-bg.png" imagemode="tile"/>
+						<text style="textPlaylistBar" margin="20,0" align="middle">@{sync header bar}</text>
+					</box>
+
+					<!-- The grid of playlists -->
+					<autogrid colspacing="30" rowspacing="30" margin="20" opacity="1.0">
+						<box maxwidth="inf" id="playlist_template" class="playlist_grid_item">
+							<box align="center" width="128">
+								<vbox>
+									<!-- Playlist image -->
+									<box>
+										<img class="playlist_image" src="Placeholders/128-playlist.png" alt="PlaceholderPlaylist|128" style="playlistImageSmall" />
+										<img class="playlist_shadow" src="skin:RoundedCornersShadowHighlight" margin="-4,-3,-4,-5"/>
+										<img class="playlist_complete" src="devices/complete.png" width="48" height="48" margin="-2,-2,0,0"/>
+									</box>
+									% function print_checkbox(checkbox_sel, visible)
+									%	if visible then
+											<img margin="0,0,4,0" alt="LoginWindowCheckbox|${checkbox_sel}" class="syncselectedonly" />
+									%	else
+											<img margin="0,0,4,0" alt="LoginWindowCheckbox|${checkbox_sel}" style="visible:false" />
+									%	end
+									% end
+									<!-- Playlist name and checkbox -->
+									<vbox margin ="0,12,0,0">
+										<hbox>
+											<!-- Playlist checkbox -->
+											<deck class="playlist_sync" mouseoffsets="2,1" onclick="togglePlaylist" page="3">
+												% print_checkbox("", true)
+												% print_checkbox("", true)
+												% print_checkbox("mousedown", true)
+												% print_checkbox("down", true)
+												% print_checkbox("down", true)
+												% print_checkbox("down,mousedown", true)
+											</deck>
+											<box>
+												<!-- Invisible dummy checkbox for vertical spacing when hiding the actual checkbox -->
+												% print_checkbox("", false)
+												<!-- Playlist name -->
+												<text margin="0,1,0,0" style="playlistTitle" class="playlist_title"><link url="spotify:search:dummy">Dummy!</link></text>
+											</box>
+										</hbox>
+									</vbox>
+								</vbox>
+								
+								<!-- Actually clickable areas, including go to-playlist button -->
+								% function print_goto_button(sel)
+								<box>
+									<img alt="GridViewGoToButton|${sel}" minwidth="16" />
+									<text class="goto_button_text" style="textGoToButton">Pass go, do not collect</text>
+								</box>
+								% end
+
+								% function print_buy_button(sel)
+								<box>
+									<img alt="GridViewGetMissing|${sel}" minwidth="31" />
+									<text class="get_label" style="textGetMore; margin: 26,4,8,0">Get they/whomever</text>
+								</box>
+								% end
+
+								% function print_goto_overlay(show_goto)
+								<vbox>
+								%   if show_goto then
+									<hbox>
+										<box maxwidth="inf" flex="1" />
+										<deck mouseoffsets="1" onclick="gotoPlaylist" margin="0,10" align="center" flex="100">
+											% print_goto_button("")
+											% print_goto_button("mousedown")
+										</deck>
+										<box maxwidth="inf" flex="1" />
+									</hbox>
+								%   end
+								</vbox>
+								% end
+
+								<deck class="playlist_sync" mouseoffsets="2,1" onclick="togglePlaylist" page="3">
+									<?
+									print_goto_overlay(false)
+									print_goto_overlay(true)
+									print_goto_overlay(true)
+									print_goto_overlay(false)
+									print_goto_overlay(true)
+									print_goto_overlay(true)
+									?>
+								</deck>
+
+								<!-- 'Get more' and status badge -->
+								<box class="syncstate_or_get_badge" height="36" margin="0,92,0,0">
+									<img src="gridview-get-more-badge.png" />
+									<deck class="syncstate_or_get_deck" margin="0,2,0,0" align="center" maxwidth="128">
+										<!-- #0: Sync state -->
+										<hbox align="center,middle" margin="9,0,9,0">
+											<deck class="syncstate_icon" margin="0,0,6,0" align="center,middle" page="4">
+												<box/>
+												<img alt="DownloadPending" imagemode="native" />
+												<img alt="OfflineIndicators|down,0" imagemode="native" animDelay="150" /> <!-- Please change this delay in constants.h as well -->
+												<img alt="OfflineIndicators|done" imagemode="native" />
+												<img alt="OfflineIndicators|nofit" imagemode="native" />
+												<img alt="OfflineIndicators|down,0" imagemode="native" animDelay="150" /> <!-- Please change this delay in constants.h as well -->
+											</deck>
+											<text class="syncstate_text" style="textPlaylistStatus">No status!</text>
+										</hbox>
+										<!-- #1: Sync progress -->
+										<hbox align="center,middle">
+											<box margin="19,0,19,0" height="8" class="readyonly" flex="1" minwidth="10">
+												<img src="devices/progress-bg-small.png" margin="0,1,0,2" imagemode="tilex" />
+												<hbox>
+													<img src="devices/progress-syncing-small.png" margin="0,1,0,2" imagemode="tilex" class="small_progress_full" animPixels="13" animDelay="50" style="filler" flex="2"/>
+													<box class="small_progress_full_counterbox" style="filler" flex="1"/>
+												</hbox>
+												<img src="devices/progress-corners-small.png" edges="3,3"/>
+											</box>
+										</hbox>
+										<!-- #2: 'Get Missing' badge -->
+										<hbox align="center,middle" margin="0,0,0,0">
+											<deck class="buy_button" mouseoffsets="1" onclick="buy" margin="0,0" align="center" flex="100">
+												% print_buy_button("")
+												% print_buy_button("mousedown")
+											</deck>
+										</hbox>
+									</deck>
+								</box>
+							</box>
+						</box>
+					</autogrid>
+				</vbox>
+				<!-- Device status debug overlay -->
+				% if debug then
+				<box maxheight="inf" maxwidth="inf" noclick="1">
+					<box margin="15" bgcolor="#fff" align="top,right">
+						<text id="device_stats_temp" style="color:#000; size: 11" margin="5">Status: AWESOME</text>
+					</box>
+				</box>
+				% end
+			</box>
+		</scrollview>
+	</vbox>
+	
+	<!-- Only display the backup flow for iPods -->
+	%if data.type == "ipod" then
+	<deck id="backup_deck" class="backup_state">
+		<vbox maxwidth="inf" align="center" bgcolor="#d1000000" id="initial_state" class="backup_state" page="0">
+			<box flex="3" maxheight="inf" />
+			<button id ="initial_state_btn" style="backupHeaderButton"
+					padding="32,4,56,4" image="IntroButton" label="@{sIpodBackupInitialStateHeader}" onClick="sync_ipod" />
+			<text width="350" style="backupText">@{sIpodBackupInitialStateText}</text>
+			<box flex="4" maxheight="inf" />
+		</vbox>
+
+		<!-- Backup this iPod? -->
+		<vbox bgcolor="#d8000000" id="ask_backup_state" class="backup_state" page="1">
+			<box flex="1" maxheight="inf" />
+			<box align="middle, center">
+				<img class="playlist_image" src="skin:RoundedCornersIpodBackup" width="430" height="270"/>
+				<vbox margin="0,20,0,20">
+					<text style="backupHeader">@{sIpodBackupAskBackupHeader}</text>
+					<box maxwidth="350" margin="40,15,40,0">
+						<text id="ask_backup_state_text" text-align="center" style="backupText" flex="1">@{sIpodBackupAskBackupText}</text>
+					</box>
+					<box maxwidth="350" margin="40,30,40,7">
+						<text id="ask_backup_state_text" text-align="center" style="backupText2" flex="1">@{sIpodBackupAskBackupText2}</text>
+					</box>
+					<hbox align="center" margin="0,0,0,20">
+						<box height="25">
+							<text align="middle" class="ask_backup_state_change_dir" style="backupSelectDirText" label="@{sIpodBackupAskBackupBtnChangeDir}"/>
+						</box>
+						<box width="20"/>
+						<deck mouseoffsets="0,1">
+							<box page="0">
+								<button class="change_dir_btn" padding="10,0,10,0" image="RoundedCornersIpodDarkGray" style="backupButtonTextLight2" label="@{sIpodBackupAskBackupBtnChangeDir}"/>
+							</box>
+							<box page="1">
+								<button class="change_dir_btn" padding="10,0,10,0" image="RoundedCornersIpodDarkGray" style="backupButtonTextLight" label="@{sIpodBackupAskBackupBtnChangeDir}" onClick="change_dir" />
+							</box>
+						</deck>
+					</hbox>
+					<hbox align="center">
+						<button id ="ask_backup_state_erase" image="RoundedCornersIpodGray" style="backupButtonTextDark" padding="10,0,10,0" label="@{sIpodBackupAskBackupBtnErase}" onClick="erase" />
+						<box width="10"/>
+						<button id ="ask_backup_state_backup" image="RoundedCornersIpodBlue" style="backupButtonTextLight" padding="10,0,10,0" label="@{sIpodBackupAskBackupBtnBackup}" onClick="backup" />
+					</hbox>
+				</vbox>
+			</box>
+			<box flex="1" maxheight="inf" />
+		</vbox>
+
+		<!-- Are you ok with erasing? -->
+		<vbox bgcolor="#d1000000" id="just_checking_state" class="backup_state" page="2">
+			<box flex="1" maxheight="inf" />
+			<box align="middle, center">
+				<img class="playlist_image" src="skin:RoundedCornersIpodBackup" width="430" height="170"/>
+				<vbox margin="0,10,0,10">
+					<box maxwidth="350" margin="40,15,40,0">
+						<text style="backupHeaderMultiLine" text-align="center" flex="1">@{sIpodBackupJustCheckingHeader}</text>
+					</box>
+					<hbox align="center" margin="0,20,0,0">
+						<button id ="just_checking_state_back" image="RoundedCornersIpodGray" style="backupButtonTextDark" padding="10,0,10,0" label="@{sIpodBackupJustCheckingBtnBack}" onClick="back" />
+						<box width="10"/>
+						<button id ="just_checking_state_erase" image="RoundedCornersIpodBlue" style="backupButtonTextLight" padding="10,0,10,0" label="@{sIpodBackupJustCheckingBtnErase}" onClick="erase" />
+					</hbox>
+				</vbox>
+			</box>
+			<box flex="1" maxheight="inf" />
+		</vbox>
+
+		<!-- Backing up -->
+		<vbox bgcolor="#d1000000" id="backing_up_state" class="backup_state" page="3">
+			<box flex="1" maxheight="inf" />
+			<box align="middle, center">
+				<img class="playlist_image" src="skin:RoundedCornersIpodBackup" width="430" height="205"/>
+				<vbox margin="0,20,0,20">
+					<text margin="0,0,0,30" style="backupHeader">@{sIpodBackupBackingUpHeader}</text>
+					<box margin="7,0,7,30" height="14" class="readyonly" flex="1">
+						<img src="devices/progress-bg.png" margin="0,1,0,2" imagemode="tilex" />
+						<hbox height="14" maxwidth="416">
+							<img id="backup_progress" src="devices/progress-syncing.png" margin="0,1,0,2" imagemode="tilex" animPixels="13" animDelay="50" flex="2" maxwidth="inf"/>
+							<box id="backup_progress_counterbox" flex="1" maxwidth="inf"/>
+						</hbox>
+						<img src="devices/progress-corners.png" edges="6,0"/>
+					</box>
+
+					<vbox align="center">
+						<hbox margin="0,0,0,20">
+							<text margin="0,0,10,0" style="performingBackupTextDark">@{sIpodBackupBackingUpText}</text>
+							<text class="backup_backing_up_text" style="performingBackupTextLight">@{sIpodBackupBackingUpText2}</text>
+						</hbox>
+						<button id ="backing_up_state_cancel" image="RoundedCornersIpodGray" padding="10,0,10,0" style="backupButtonTextDark" label="@{sIpodBackupBackingUpBtnCancel}" onClick="cancel" />
+					</vbox>
+				</vbox>
+			</box>
+			<box flex="1" maxheight="inf" />
+		</vbox>
+
+		<!-- Error screen -->
+		<vbox bgcolor="#d1000000" id="backup_error_state" class="backup_state" page="4">
+			<box flex="1" maxheight="inf" />
+			<box align="middle, center">
+				<img class="playlist_image" src="skin:RoundedCornersIpodBackup" width="430" height="170"/>
+				<vbox margin="0,20,0,20">
+					<text style="backupHeader">@{sIpodBackupErrorHeader}</text>
+					<box maxwidth="350" margin="40,30,40,30">
+						<text id="ask_backup_state_text" text-align="center" style="backupText" flex="1">@{sIpodBackupErrorText}</text>
+					</box>
+					<hbox align="center">
+						<button id ="backup_error_ok" image="RoundedCornersIpodBlue" style="backupButtonTextLight" padding="10,0,10,0" label="@{sIpodBackupErrorBtnOk}" onClick="ok" />
+					</hbox>
+				</vbox>
+			</box>
+			<box flex="1" maxheight="inf" />
+		</vbox>
+	</deck>
+	%else
+	<box maxheight="inf" maxwidth="inf" bgcolor="#d1000000" class="overlay">
+		<vbox align="center">
+			<box flex="3" maxheight="inf" />
+			<button style="size: 24; height:58; bold: 1; align: center; margin: 0,15,0,0; face:arial; color:#fff;"
+			        padding="32,0,56,4" image="IntroButton" label="@{mobile sync intro button}" onClick="takeOwnership" />
+			<box flex="4" maxheight="inf" />
+		</vbox>
+	</box>
+	%end
+
+</box>
+</document>

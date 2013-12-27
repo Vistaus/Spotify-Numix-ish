@@ -1,0 +1,140 @@
+<%
+include("views/functions.xml")
+
+if next(data) == nil then
+	data.step_name = "set_manually_manage"
+	data.can_continue = true
+end
+
+content = {
+  set_manually_manage = {
+    title = function() %> <% end,
+    content = function() %> 
+    <style>
+      title {
+        face: arial;
+        size: 30;
+        color: #464b52;
+        flex: 1;
+        maxlines: 1;
+        bold: 1;
+      }
+      explanation {
+        title;
+        size: 18;
+        color: #929597;
+        maxlines: 2;
+        bold: 0;
+      }
+      list-header {
+        explanation;
+        size: 12;
+        flex: 0;
+      }
+      list-item {
+        explanation;
+        color: #333;
+        flex: 0;
+      }
+      button-ok {
+        color: #fff;
+        text-shadow: #1a67a3 0 -1;
+      }
+      button-cancel {
+        color: #444;
+        text-shadow: #fff 0 1;
+      }
+      checkbox {
+        color: #333;
+        align: middle;
+      }
+      checkbox-hover {
+        checkbox;
+        color: #555;
+      }
+      checkbox-image {
+        imagemode: native;
+        align: middle;
+      }
+    </style>
+	
+    <vbox background="devices/bg_blue.png" backgroundRepeat="x">
+      <text style="title" margin="40,25,40,0">@{xDiskUseFlowTitle}</text>
+      <text style="explanation" margin="40,0,40,20">@{xDiskUseFlowDescription}</text>
+      <hbox margin="0,10">
+        <img src="devices/manually-manage-itunes.png" imagemode="native" align="middle"/>
+        <box maxwidth="inf" />
+        <img src="devices/manually-manage-arrow.png" margin="20,0,20,0" imagemode="native" align="middle"/>
+        <box maxwidth="inf" />
+        <img src="devices/manually-manage-screenshot.png" imagemode="native" align="middle"/>
+      </hbox>
+      <hbox height="40" background="window-flow-footer.png" backgroundRepeat="x" flex="1">
+        <box maxwidth="inf" />
+          <% orderButtons(function() %>
+		    <% if data.can_continue then %>
+			  <button image="HeadBarButton|popin" style="button-ok" align="middle" padding="18,4,18,5" margin="0,0,10,0" label="@{sDialogContinue}" onClick="continue"/>
+		    <% else %>
+			  <box align="middle" height="16" margin="0,0,10,0">
+				<img alt="HeadBarButton|popin" opacity="0.6"/>
+				<text align="middle" margin="18,0,18,0" style="button-ok" opacity="0.8">@{sDialogContinue}</text>
+			  </box>
+		    <% end %>
+          <% end, function() %>
+			<button image="HeadBarButton" style="button-cancel" align="middle" padding="18,4,18,5" margin="0,0,10,0" label="@{xDontUseSpotify}" onClick="close"/>
+	      <% end) %>
+      </hbox>
+    </vbox>
+    <% end
+  },
+}
+%>
+
+<document>
+  <style>
+    textYes {
+      color: #fff;
+      text-shadow: #0a62a6 0 -1;
+    }
+    textNo {
+      color: #111111;
+      text-shadow: #d0d0d0 0 1;
+    }
+    textHeader {
+        align: left;
+        bold: 1;
+        size: 23;
+        color: #000;
+        face: arial;
+        margin: 30,20,10,11;
+        textshadow: #444 0 0;
+    }
+    textBody {
+      face: arial;
+      align: left;
+      size: 18;
+      bold: 0;
+      text-shadow: #fff 0 0;
+      margin: 30,0,20,20;
+      color: #444;
+      flex: 1;
+    }
+    button {
+      face: arial;
+      size: 14;
+      height: 29;
+      align: right;
+      margin: -5,10,15,15;
+      bold: 1;
+    }
+    publishCheckbox {
+      textBody;
+      bold: 0;
+      margin: 5,0,13,0;
+      size:12;
+      color:#111;
+      face:tahoma;
+    }
+  </style>
+
+  <% include("views/generic_lightbox.xml") %>
+</document>

@@ -1,0 +1,55 @@
+<?
+if not data.source_title then
+  data = {
+    source_title = "An awesome playlist",
+    source_link = "spotify:search:awesome",
+    source_icon = "biography-image_border.png",
+    source_collaborative = false,
+    user = "smedjan",
+    user_link = "spotify:user:smedjan",
+    num_queued = 12,
+    source_title_font = 43,
+  }
+end
+?>
+<document>
+  <style>
+    text {
+      size:11;
+      text-shadow:#222222 0 -1;
+    }
+    caption {
+      text;
+      color:#979596;
+    }
+    numqueued {
+      text;
+      color:#F4EF94;
+    }
+    title {
+      skinfont: ${data.source_title_font};
+    }
+    user {
+      text;
+      color:#727272;
+      linkcolor:#a0a0a0;
+      text-shadow:#333333 0 1;
+    }
+  </style>
+
+  %-- <debug color="kaka"/>
+
+  <vbox style="bgcolor: #373737" >
+    <hbox margin ="12">
+      <text style="caption">@{Playqueue playing from}</text>
+      %-- 196676
+      <img width="20" height="20" imagemode="native" margin="4,-3,4,-3" alt="${data.source_icon}" />
+      <text style="title"><link url="${data.source_link}">${data.source_title}</link></text>
+      % if data.user then
+        <text style="user"> @{Generic by <link url="${data.user_link}">${data.user}</link>}</text>
+      % end
+      <box flex="1" maxWidth="inf" />
+      <text style="numqueued">@{Playqueue tracks queued ${data.num_queued}}</text>
+    </hbox>
+  </vbox>
+</document>

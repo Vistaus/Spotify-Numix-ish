@@ -1,0 +1,83 @@
+<document>
+	<style>
+		buttonHeader {
+		color: #252419;
+		align: right;
+		height: 23;
+		margin: 0,7,7,7;
+		text-shadow: #fff 0 1;
+		}
+
+		buttonHeaderDone {
+		text-shadow: #a1dd50 0 1;
+		}
+
+		textBar {
+			align: middle;
+			text-shadow: #fff 0 1;
+			max-lines: 1;
+			face:arial;
+			size:14;
+			color:#252419;
+		%-- This flexing, it is ugly.
+			flex: 100;
+			margin: 10,0,15,0;
+		}
+
+		textBarSelf {
+			text-shadow: #f9f9f9 0 1;
+			color:#222;
+		}
+
+		filler {
+			flex: 1;
+			maxwidth: inf;
+		}
+
+		button {
+			margin: 0,2,10,0;
+			face: tahoma;
+			size: 12;
+			align: center, middle;
+		}
+		button-cancel {
+			button;
+			color: #222;
+			text-shadow: #ededed 0 1;
+			height: 24;
+		}
+		button-cancel-disabled {
+			button-cancel;
+			color: #aaa;
+		}
+		button-ok {
+			button;
+			color: #fff;
+			text-shadow: #1a67a3 0 -1;
+		}
+		button-ok-mousedown {
+			button-ok;
+		}
+		button-ok-disabled {
+			button-ok;
+			color: #aaa;
+			text-shadow: #999 0 -1;
+		}
+
+	</style>
+
+	%-- <debug color="kaka" />
+
+	<box bgcolor="#373737">
+		<vbox>
+			<box maxWidth="inf">
+				<img alt="HeadBarBackground|self" shadow="1"></img>
+				<hbox margin="0,9,0,9">
+					<text style="textBar">@{Add Application to Favorites}</text>
+					<box style="filler"/>
+					<button style="button-ok" padding="14,3,14,5" image="LightboxButton|self" label="@{Add Application button label}" onClick="addApplication" />
+				</hbox>
+			</box>
+		</vbox>
+	</box>
+</document>

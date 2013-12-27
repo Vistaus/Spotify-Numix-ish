@@ -1,0 +1,27 @@
+<style>
+	text-style {
+		size: 18;
+		color: #808080;
+		face: arial;
+		text-shadow: #222 0 1;
+		flex: 1;
+		align: middle,center;
+		max-width: 380;
+		text-align: center;
+		link-color: #fff;
+	}
+	subtext-style {
+		text-style;
+		size: 13;
+	}
+	spacer-style {
+		flex: 1;
+		max-height: inf;
+	}
+
+	icon-style {
+		width:186;
+		height:247;
+		align:center;
+	}
+</style>
