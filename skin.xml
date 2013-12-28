@@ -1403,8 +1403,8 @@
 <!-- Settings view -->
 <bitmap ci="SettingsBubble" file="info_group-bubble-bg.png" edge="8,9,8,9" />
 <bitmap ci="SettingsBubbleDrop" file="info_group-bubble-drop.png" align="center,bottom" />
-<font ci="SettingsHeaderFont" size="12" color="#FFFFFF" shadow="#000000" />
-<font ci="SettingsFont" size="12" color="#FFFFFF" shadow="#555555" />
+<font ci="SettingsHeaderFont" size="12" color="#f2f2f2" shadow="#000000" />
+<font ci="SettingsFont" size="12" color="#f2f2f2" shadow="#555555" />
 <font ci="SettingsFont" sel="warning" size="12" color="#FFFFFF" shadow="#555555" />
 <font ci="SettingsFont" sel="disabled" size="12" color="#949494" shadow="#555555" />
 <font ci="SettingsDropDownFont" size="12" color="#222222" shadow="#ffffff" />
@@ -1498,7 +1498,7 @@
   <subBitmap height="23" ci="ToggleButton" sel="on" />
 </bitmap>
 
-<font ci="OfflineSyncButton" sel="off" face="arial" size="14" color="#515151" shadow="#a6a6a6" style="bold" />
+<font ci="OfflineSyncButton" sel="off" face="arial" size="14" color="#dedede" shadow="#a6a6a6" style="bold" />
 <font ci="OfflineSyncButton" sel="on" face="arial" size="14" color="#ffffff" shadow="#1f5f30" style="bold,shadow_up" />
 
 <font ci="OfflineSyncButtonDesc" size="13" color="#ffffff" />
