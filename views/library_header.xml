@@ -29,7 +29,7 @@ end
 		margin: 0, 1, 0, 0;
 	}
 	h1 {
-		face: arial;
+		face: georgia;
 		size: 30;
 		color: #eee;
 		text-shadow: #222 0 1;

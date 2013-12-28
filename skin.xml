@@ -141,8 +141,8 @@
 </bitmap>
 
 <!-- Add to Library -->
-<font ci="AddToLibraryButton" size="12" color="#dddddd" face="tahoma" />
-<font ci="AddToLibraryButton" size="12" color="#ffffff" face="tahoma" sel="mousedown,mouseover,selected,focused,disabled" />
+<font ci="AddToLibraryButton" size="12" color="#dedede" face="georgia" />
+<font ci="AddToLibraryButton" size="12" color="#dedede" face="georgia" sel="mousedown,mouseover,selected,focused,disabled" />
 
 <!-- Button with star -->
 <bitmap file="star-button.png">
@@ -227,7 +227,7 @@
   <subBitmap width="35" ci="AddPlaylistButton" sel="mousedown" edge="22,0,12,0" />
 </bitmap>
 
-<font ci="AddPlaylistButton" size="12" color="#222222" shadow="#dddddd" face="tahoma" />
+<font ci="AddPlaylistButton" size="12" color="#222222" shadow="#dddddd" face="georgia" />
 <font ci="AddPlaylistButton" size="12" color="#222222" shadow="#dddddd" face="tahoma" sel="mousedown,mouseover,selected,focused" />
 <font ci="AddPlaylistButton" size="12" color="#555555" shadow="#dddddd" face="tahoma" sel="disabled" />
 
@@ -252,11 +252,11 @@
   <subBitmap height="20" ci="MainlistLowerLinkButton" sel="mousedown" edge="9,0,9,0" />
 </bitmap>
 
-<font ci="SidebarBadge" sel="round" face="arial" size="11" style="shadow_up" shadow="#c13a3a" color="#ffffff" />
+<font ci="SidebarBadge" sel="round" face="georgia" size="16" style="shadow_up" shadow="#c13a3a" color="#ffffff" />
 <font ci="SidebarBadge" sel="round,selected,focused" style="shadow_up" shadow="#475b6b" face="arial" size="11" color="#b3ddfd" />
 <font ci="SidebarBadge" sel="round,selected,!focused" style="shadow_up" shadow="#c13a3a" face="arial" size="11" color="#ffffff" />
 
-<font ci="SidebarBadge" sel="square" face="arial" size="11" shadow="none" color="#979797" />
+<font ci="SidebarBadge" sel="square" face="georgia" size="16" shadow="none" color="#979797" />
 <font ci="SidebarBadge" sel="square,selected,focused" face="arial" size="11" shadow="none" color="#b0daf6" />
 <font ci="SidebarBadge" sel="square,selected,!focused" face="arial" size="11" shadow="none" color="#979797" />
 
@@ -306,16 +306,16 @@
 <color ci="MainlistAlbumViewBg" color="#ecebe8" sel="light" />
 <color ci="MainlistNowPlayingBg" color="#000000" />
 
-<font ci="MainlistEmptyText" size="18" color="#808080" face="arial" shadow="#222222" style="shadow_up" />
+<font ci="MainlistEmptyText" size="18" color="#808080" face="georgia" shadow="#222222" style="shadow_up" />
 
 
 <!-- Background color for track rows -->
 <bitmap ci="MainlistRow" sel="playing,!selected,!light" file="mainlist-row-playing-bg.png" />
-<color ci="MainlistRow" sel="!playing"                                                    color="#313131" />
-<color ci="MainlistRow" sel="!playing,oddrow"                                             color="#373737" />
+<color ci="MainlistRow" sel="!playing"                                                    color="#f9f9f9" />
+<color ci="MainlistRow" sel="!playing,oddrow"                                             color="#f9f9f9" />
 <color ci="MainlistRow" sel="!playing,oddrow,albumview" />
 <color ci="MainlistRow" sel="!playing,!oddrow,albumview,group"                            color="#202020" />
-<color ci="MainlistRow" sel="selected,focused"                                            color="#a9d9fe" />
+<color ci="MainlistRow" sel="selected,focused"                                            color="#d64937" />
 <color ci="MainlistRow" sel="selected,!focused"                                           color="#6c6c6c" />
 <color ci="MainlistRow" sel="light"                                                       color="#E8E6E2" />
 <color ci="MainlistRow" sel="light,oddrow"                                                color="#FEFDFB" />
@@ -326,7 +326,7 @@
 <!-- MAINLIST ROW FONT -->
 
 <!-- default row that everything uses -->
-<font ci="MainlistRow" sel="!light"                                                      color="#dddddd" size="12" shadow="#333333" style="shadow_up" id="mainlistRow" />
+<font ci="MainlistRow" sel="!light"                                                      color="#333333" face="cantarell" size="11" shadow="#333333" style="shadow_up" id="mainlistRow" />
 <font ci="MainlistRow" sel="light"                                                       color="#1d1d1d" size="12" shadow="none" style="none"/>
 <!-- <font ci="MainlistRow" sel="playing,unmatched"                                           color="#7b7b7b" shadow="#2c2c2c" style="shadow_up" />
 -->
@@ -340,8 +340,8 @@
 <font ci="MainlistRow" sel="playing,!light"                                                      color="#afff84" />
 
 <!-- Being selected overrides everything above -->
-<font ci="MainlistRow" sel="selected,focused"                                             color="#000f1a" shadow="none" />
-<font ci="MainlistRow" sel="selected,!focused,!light"                                            color="#bbbbbb" shadow="none" />
+<font ci="MainlistRow" sel="selected,focused"                                             color="#333333" face="cantarell" shadow="none" />
+<font ci="MainlistRow" sel="selected,!focused,!light"                                            color="#333333" face="cantarell" shadow="none" />
 <font ci="MainlistRow" sel="selected,!focused,light"                                      color="#ffffff" shadow="none" />
 <font ci="MainlistRow" sel="selected,focused,light"                                      color="#ffffff" shadow="none" />
 <!-- <font ci="MainlistRow" sel="light,!playing,unmatched"                                     color="#888888" /> -->
@@ -576,12 +576,12 @@
 <font ci="MessageBarText" size="13" color="#340800" sel="error,!link" />
 <font ci="MessageBarText" size="13" color="#004ba0" sel="error,link"    style="bold,underline" />
 
-<font ci="NowPlayingTrackText" face="arial" size="12" style="bold,shadow_up" shadow="#363636" color="#ffffff" />
-<font ci="NowPlayingTrackText" face="arial" size="12" style="bold,shadow_up,underline" shadow="#363636" color="#ffffff" sel="mouseover"/>
-<font ci="NowPlayingTrackText" face="arial" size="12" style="bold,shadow_up" shadow="#363636" color="#888888" sel="disabled"/>
-<font ci="NowPlayingArtistText" size="9" style="bold,shadow_up" shadow="#363636" color="#e4e4e4" />
-<font ci="NowPlayingArtistText" size="9" style="bold,shadow_up,underline" shadow="#363636" color="#e4e4e4" sel="mouseover"/>
-<font ci="NowPlayingArtistText" size="9" style="bold,shadow_up" shadow="#363636" color="#777777" sel="disabled"/>
+<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up" shadow="#363636" color="#ffffff" />
+<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up,underline" shadow="#363636" color="#ffffff" sel="mouseover"/>
+<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up" shadow="#363636" color="#888888" sel="disabled"/>
+<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up" shadow="#363636" color="#e4e4e4" />
+<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up,underline" shadow="#363636" color="#e4e4e4" sel="mouseover"/>
+<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up" shadow="#363636" color="#777777" sel="disabled"/>
 <font ci="NowPlayingButtonText" size="11" color="#aaaaaa" style="shadow_up,bold" shadow="#363636" />
 <font ci="NowPlayingButtonText" size="11" color="#555555" sel="disabled" shadow="#c7c7c7" />
 
@@ -611,7 +611,7 @@
   <subBitmap width="20" ci="NowPlayingShareButton" sel="mousedown|down"/>
 </bitmap>
 
-<color ci="NowPlayingBackground" color="#282828" />
+<color ci="NowPlayingBackground" color="#333333" />
 <bitmap file="now_playing-vrule.png" ci="NowPlayingVrule"/>
 
 <bitmap file="throbber-small-black.png">
@@ -704,7 +704,9 @@
 	<subBitmap ci="Throbber16Black" sel="11" width="16" />
 </bitmap>
 
-<font ci="MenuBar" size="11" color="#616161" shadow="#CFCFCF" />
+<color ci="MenuBar" color="#2d2d2d" />
+
+<font ci="MenuBar" size="11" color="#f9f9f9" shadow="#CFCFCF" />
 <font ci="MenuBar" sel="mouseover"    size="11" color="#FFFFFF" />
 
 <font ci="TutorialPopupTitle" size="14" color="#ffffff" face="arial" shadow="#305a00" style="bold" />
@@ -970,7 +972,7 @@
 	<subBitmap height="19" ci="EditboxBg" edge="22,3,9,3" sel="filter" />
 </bitmap>
 <bitmap ci="FilterIcon" file="filter-icon.png" />
-<font ci="FilterText" size="12" face="arial" color="#949494" shadow="#0e0e0e" style="bold,shadow_up"/>
+<font ci="FilterText" size="11" face="cantarell" color="#949494" shadow="#0e0e0e" style="bold,shadow_up"/>
 <!-- end of Login window -->
 
 <bitmap file="toolbar-search_bg.png" >
@@ -1071,7 +1073,7 @@
 <bitmap ci="NowPlayingDefaultAdCover" file="Placeholders/300-advertising.png" />
 
 <!-- Listcontainer/List of playlists -->
-<color ci="SidebarBg" color="#474747" />
+<color ci="SidebarBg" color="#dedede" />
 
 <bitmap file="button-text-11.png">
   <subBitmap height="20" ci="SidebarNewPlaylistButton" edge="9,0,9,0" />
@@ -1202,10 +1204,10 @@
   <subBitmap ci="SidebarPlayIcon" width="12" offset="1,0" sel="paused,selected,focused" />
 </bitmap>
 
-<font ci="SidebarRowFont" size="11" color="#dddddd" shadow="#333333" />
-<font ci="SidebarRowFont" sel="link,mouseover" color="#dddddd" />
-<font ci="SidebarRowFont" sel="selected" style="bold" color="#2b3844" shadow="#afd3f0" />
-<font ci="SidebarRowFont" sel="selected,!focused" style="bold" color="#e1e1e1" shadow="#444444" />
+<font ci="SidebarRowFont" size="11" color="#333333" shadow="#333333" />
+<font ci="SidebarRowFont" sel="link,mouseover" color="#333333" />
+<font ci="SidebarRowFont" sel="selected" style="bold" color="#333333" shadow="#afd3f0" />
+<font ci="SidebarRowFont" sel="selected,!focused" style="bold" color="#333333" shadow="#444444" />
 
 <font ci="SidebarRowFont" sel="drop" size="11" color="#333333" shadow="#ffffff" style="bold" />
 <font ci="SidebarRowFont" sel="drop,selected" size="11" color="#333333" shadow="#ffffff" style="bold" />
@@ -1604,7 +1606,7 @@
 	<subBitmap ci="SmallCampaignArea" sel="mousedown" height="22" edge="31,0,13,0" />
 </bitmap>
 
-<font ci="AccountNameFont" size="11" face="Tahoma" color="#212121" shadow="#c6c6c6" />
+<font ci="AccountNameFont" size="11" face="cantarell" color="#f9f9f9" shadow="#c6c6c6" />
 <font ci="AccountNameFont" sel="incognito" size="11" face="Tahoma" color="#23598c" shadow="#c6c6c6" />
 <font ci="AccountNameFont" sel="down|mousedown" size="11" face="Tahoma" color="#999999" shadow="#111111" />
 
@@ -1684,7 +1686,7 @@
 <bitmap ci="MrBombDark64" file="mr_bomb-dark-64.png" />
 
 <!-- Filter bar -->
-<font ci="FilterBarText" face="arial" size="14" style="bold" color="#707070" shadow="#f9f9f9" />
+<font ci="FilterBarText" face="cantarell" size="14" style="bold" color="#707070" shadow="#f9f9f9" />
 <font ci="FilterBarMatchText" face="tahoma" size="11" color="#000000" shadow="#f9f9f9" />
 <font ci="FilterCloseButton" face="tahoma" size="11" color="#000000" shadow="#ffffff" />
 
@@ -1708,7 +1710,7 @@
 
 <!-- New header toolbar -->
 
-<font ci="ViewToolbarButton" face="arial" size="15" color="#888888" shadow="#111111" />
+<font ci="ViewToolbarButton" face="cantarell" size="15" color="#888888" shadow="#111111" />
 <font ci="ViewToolbarButton" sel="mouseover" color="#ffffff" />
 <font ci="ViewToolbarButton" sel="mousedown" color="#888888" />
 
