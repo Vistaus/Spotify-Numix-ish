@@ -1,7 +1,7 @@
 <document>
 	<style>
 		buttonHeader {
-		color: #252419;
+		color: #dedede;
 		align: right;
 		height: 23;
 		margin: 0,7,7,7;
@@ -68,7 +68,7 @@
 
 	%-- <debug color="kaka" />
 
-	<box bgcolor="#373737">
+	<box bgcolor="#dedede">
 		<vbox>
 			<box maxWidth="inf">
 				<img alt="HeadBarBackground|self" shadow="1"></img>

@@ -302,9 +302,9 @@
 <font ci="MainlistColumnHeader" size="11" color="#1d1d1d" style="shadow,bold" shadow="#dddddd" sel="light,down" />
 
 
-<color ci="MainlistAlbumViewBg" color="#373737" />
-<color ci="MainlistAlbumViewBg" color="#ecebe8" sel="light" />
-<color ci="MainlistNowPlayingBg" color="#000000" />
+<color ci="MainlistAlbumViewBg" color="#f9f9f9" />
+<color ci="MainlistAlbumViewBg" color="#f9f9f9" sel="light" />
+<color ci="MainlistNowPlayingBg" color="#f9f9f9" />
 
 <font ci="MainlistEmptyText" size="18" color="#808080" face="georgia" shadow="#222222" style="shadow_up" />
 
@@ -327,7 +327,7 @@
 
 <!-- default row that everything uses -->
 <font ci="MainlistRow" sel="!light"                                                      color="#333333" face="cantarell" size="11" shadow="#333333" style="shadow_up" id="mainlistRow" />
-<font ci="MainlistRow" sel="light"                                                       color="#1d1d1d" size="12" shadow="none" style="none"/>
+<font ci="MainlistRow" sel="light"                                                       color="#333333" size="12" shadow="none" style="none"/>
 <!-- <font ci="MainlistRow" sel="playing,unmatched"                                           color="#7b7b7b" shadow="#2c2c2c" style="shadow_up" />
 -->
 <!-- Select based on the error state enum -->
@@ -415,12 +415,12 @@
 <color ci="MainlistRowVerticalLine" />
 <color ci="MainlistRowHorizLine" />
 
-<font ci="MainlistArtistViewSectionName" offset="-10,-10" face="arial" size="14" style="bold,shadow_up" color="#d7d7d7" shadow="#424242" />
+<font ci="MainlistArtistViewSectionName" offset="-10,-10" face="cantarell" size="14" style="bold,shadow_up" color="#466634" shadow="#424242" />
 <font ci="MainlistAlbumViewAlbumName" face="arial" style="bold" size="14" color="#dddddd" shadow="#222222" />
 <font ci="MainlistAlbumViewAlbumName" sel="mouseover" style="bold,underline" color="#ffffff" shadow="#111111" />
-<font ci="MainlistAlbumViewAlbumYear" face="arial" size="14" color="#888888" shadow="#222222" style="shadow_up" />
+<font ci="MainlistAlbumViewAlbumYear" face="cantarell" size="14" color="#466634" shadow="#222222" style="shadow_up" />
 
-<font ci="MainlistPlaylistOwner" face="arial" size="14" color="#808080" shadow="#404040" />
+<font ci="MainlistPlaylistOwner" face="cantarell" size="14" color="#466634" shadow="#404040" />
 <font ci="MainlistPlaylistOwner" sel="link,!mouseover" face="arial" style="bold" size="14" color="#808080" shadow="#404040" />
 <font ci="MainlistPlaylistOwner" sel="link,mouseover" face="arial" style="bold,underline" size="14" color="#EEEEEE" shadow="#404040" />
 
@@ -886,8 +886,8 @@
 <bitmap ci="LoginWindowBgNoTitlebar" file="login/background-no-titlebar.png" edge="0,10,0,10" />
 
 
-<font ci="WindowCaption" size="13" style="shadow_down" color="#605f5e" shadow="#eeeeee" sel="login"/>
-<font ci="CheckBoxTitle" size="11"  color="#605f5e" />
+<font ci="WindowCaption" size="13" style="shadow_down" color="#333333" shadow="#eeeeee" sel="login"/>
+<font ci="CheckBoxTitle" size="11"  color="#333333" />
 
 <bitmap file="login/bubble.png">
   <subBitmap ci="LoginErrorBubble" sel="top" height="17" edge="6,15,6,0" />
@@ -915,21 +915,21 @@
 <bitmap ci="LoginWindowMessageBubble" file="login/bubble.png" edge="5, 14, 5, 4" />
 <bitmap ci="LoginWindowErrorIcon" file="login/bubble-flag.png" />
 
-<font ci="LoginWindowLoggingInText" size="15" color="#605f5e" />
+<font ci="LoginWindowLoggingInText" size="15" color="#333333" />
 
-<font ci="LoginWindowErrorTitle" size="13" color="#605f5e" style="bold" />
-<font ci="LoginWindowErrorText" size="11" color="#605f5e" />
-<font ci="LoginWindowErrorText" color="#1171d3" sel="link" />
-<font ci="LoginWindowErrorText" color="#1171d3" sel="linkover" style="underline" />
+<font ci="LoginWindowErrorTitle" size="13" color="#333333" style="bold" />
+<font ci="LoginWindowErrorText" size="11" color="#333333" />
+<font ci="LoginWindowErrorText" color="#333333" sel="link" />
+<font ci="LoginWindowErrorText" color="#333333" sel="linkover" style="underline" />
 
-<font ci="LoginWindowEditBoxTitle" size="11" color="#605f5e" />
-<font ci="LoginWindowLoginCaption" size="11" color="#605f5e" />
+<font ci="LoginWindowEditBoxTitle" size="11" color="#333333" />
+<font ci="LoginWindowLoginCaption" size="11" color="#333333" />
 <font ci="LoginWindowLoginCaption" style="bold" sel="bold" />
 <font ci="LoginWindowLoginCaption" style="underline" sel="linkover" />
-<font ci="LoginWindowLink" size="9" color="#605f5e" />
-<font ci="LoginWindowLink" size="9" color="#605f5e" style="underline" sel="linkover" />
-<font ci="LoginWindowButton" size="12" color="#ffffff" shadow="#162642" style="shadow_up" />
-<font ci="LoginWindowButton" size="12" color="#ffffff" shadow="#162642" style="shadow_up" sel="disabled" />
+<font ci="LoginWindowLink" size="9" color="#333333" />
+<font ci="LoginWindowLink" size="9" color="#333333" style="underline" sel="linkover" />
+<font ci="LoginWindowButton" size="12" color="#333333" shadow="#333333" style="shadow_up" />
+<font ci="LoginWindowButton" size="12" color="#333333" shadow="#333333" style="shadow_up" sel="disabled" />
 
 <bitmap file="checkbox.png">
 	<subBitmap height="18" ci="LoginWindowCheckbox" edge="18,0,0,0" sel="down" />
@@ -972,7 +972,7 @@
 	<subBitmap height="19" ci="EditboxBg" edge="22,3,9,3" sel="filter" />
 </bitmap>
 <bitmap ci="FilterIcon" file="filter-icon.png" />
-<font ci="FilterText" size="11" face="cantarell" color="#949494" shadow="#0e0e0e" style="bold,shadow_up"/>
+<font ci="FilterText" size="11" face="cantarell" color="#333333" shadow="#0e0e0e" style="bold,shadow_up"/>
 <!-- end of Login window -->
 
 <bitmap file="toolbar-search_bg.png" >
@@ -1254,17 +1254,17 @@
 <bitmap ci="SidebarCollectionAlbums" file="collection-albums.png" />
 <bitmap ci="SidebarCollectionArtists" file="collection-artists.png" />
 
-<font ci="SidebarHeaderFont" size="13" face="arial" style="bold" color="#111111" shadow="#cccccc" />
+<font ci="SidebarHeaderFont" size="13" face="cantarell" style="bold" color="#111111" shadow="#cccccc" />
 <font ci="SidebarHeaderFont" sel="disabled" size="13" style="bold" color="#222222" shadow="#cccccc" />
 <font ci="SidebarHeaderFont" sel="mouseover" size="13" style="bold" color="#111111" shadow="#ececec" />
 <font ci="SidebarHeaderFont" sel="mousedown" size="13" style="bold" color="#111111" shadow="#ababab" />
-<font ci="SidebarHeaderFont" sel="small" size="11" face="arial" style="bold" color="#111111" shadow="#cccccc" />
+<font ci="SidebarHeaderFont" sel="small" size="11" face="cantarell" style="bold" color="#111111" shadow="#cccccc" />
 <font ci="SidebarHeaderFont" sel="small,disabled" size="11" style="bold" color="#222222" shadow="#cccccc" />
 
-<color ci="TopListHeaderBg" color="#1F1F1F" />
-<color ci="TopListRowBg" color="#373737" />
-<color ci="TopListRowBg" color="#313131" sel="odd" />
-<font ci="TopListRowNumberBig" size="14" style="bold" color="#FEF772" />
+<color ci="TopListHeaderBg" color="#f9f9f9" />
+<color ci="TopListRowBg" color="#f9f9f9" />
+<color ci="TopListRowBg" color="#f9f9f9" sel="odd" />
+<font ci="TopListRowNumberBig" size="14" style="bold" color="#333333" />
 
 <font ci="TopListRowNumberSmall"                                  size="12" color="#727272" />
 <font ci="TopListRowNumberSmall" sel="!playing,selected,focused"  size="12" color="#000000" />
@@ -1377,10 +1377,10 @@
 <font ci="LabelReadMore" size="9" color="#9fd8ef" />
 <font ci="LabelReadMore" sel="mouseover" style="underline" />
 
-<font ci="PlayQueueHeaderCaption" size="11" color="#979596" shadow="#222222" style="shadow_up" />
-<font ci="PlayQueueHeaderSourceName" size="11" color="#D5D5D5" shadow="#222222" style="shadow_up" />
-<font ci="PlayQueueHeaderNumQueued" size="11" color="#F4EF94" shadow="#222222" style="shadow_up" />
-<color ci="PlayQueueHeaderBg" color="#373737" />
+<font ci="PlayQueueHeaderCaption" size="11" color="#333333" shadow="#222222" style="shadow_up" />
+<font ci="PlayQueueHeaderSourceName" size="11" color="#333333" shadow="#222222" style="shadow_up" />
+<font ci="PlayQueueHeaderNumQueued" size="11" color="#333333" shadow="#222222" style="shadow_up" />
+<color ci="PlayQueueHeaderBg" color="#f9f9f9" />
 
 <bitmap ci="TopTabBarBg" file="Tab Bar/bg.png"/>
 <bitmap ci="TopTabBarButton" file="Tab Bar/active.png" edge="11,0,11,0" />

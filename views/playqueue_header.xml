@@ -20,26 +20,26 @@ end
     }
     caption {
       text;
-      color:#979596;
+      color:#333333;
     }
     numqueued {
       text;
-      color:#F4EF94;
+      color:#333333;
     }
     title {
       skinfont: ${data.source_title_font};
     }
     user {
       text;
-      color:#727272;
-      linkcolor:#a0a0a0;
+      color:#333333;
+      linkcolor:#333333;
       text-shadow:#333333 0 1;
     }
   </style>
 
   %-- <debug color="kaka"/>
 
-  <vbox style="bgcolor: #373737" >
+  <vbox style="bgcolor: #f9f9f9" >
     <hbox margin ="12">
       <text style="caption">@{Playqueue playing from}</text>
       %-- 196676

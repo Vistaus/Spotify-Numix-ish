@@ -49,7 +49,7 @@ include("views/generic_header_style.xml")
 %>
 
   <!-- debug color="kaka" /-->
-  <box bgcolor="#373737">
+  <box bgcolor="#f9f9f9">
     <hbox minWidth="300" margin="12,9,12,12">
       <!-- Big image -->
       % if template.image or template.image_alt then
