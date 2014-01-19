@@ -11,30 +11,30 @@
     textBaseLarge;
     max-lines: 1;
     bold:true;
-    color: #333333;
+    color: #fff;
     hoverlink-underline:0;
     text-shadow:#222 0 1;
   }
   textAuthor {
     textBaseLarge;
     text-shadow:#222 0 1;
-    color: #33333;
+    color: #888;
   }
   textAuthorLink {
     textBaseLarge;
     bold: 1;
-    color: #33333;
+    color: #f0f;
     link-color:#bbb;
     text-shadow:#222 0 1;
-    hoverlink-color:#f9f9f9;
+    hoverlink-color:#fff;
     hoverlink-underline:0;
   }
   textDescription {
     skinfont: InfoviewTextBody;
     size:11;
     text-shadow:#222 0 -1;
-	link-color:#33333;
-    hoverlink-color:#33333;
+	link-color:#fff;
+    hoverlink-color:#fff;
     hoverlink-underline:1;
     flex: 1;
   }

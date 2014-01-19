@@ -29,9 +29,9 @@ end
 		margin: 0, 1, 0, 0;
 	}
 	h1 {
-		face: georgia;
+		face: arial;
 		size: 30;
-		color: #333333;
+		color: #eee;
 		text-shadow: #222 0 1;
 		bold: true;
 		margin: 10,-4,0,0;
@@ -41,7 +41,7 @@ end
 	desc {
 		margin: 15,4,10,0;
 		size: 11;
-		color: #333333;
+		color: #808080;
 		face: tahoma;
 		text-shadow: #222 0 -1;
 		max-width: 320;
@@ -58,7 +58,7 @@ end
 
 %--<debug color="kaka" />
 
-	<box bgcolor="#f9f9f9">
+	<box bgcolor="#373737">
 		<vbox>
 			<hbox margin="12">
 				<hbox maxwidth="inf">

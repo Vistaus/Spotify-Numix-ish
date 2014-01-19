@@ -576,14 +576,14 @@
 <font ci="MessageBarText" size="13" color="#340800" sel="error,!link" />
 <font ci="MessageBarText" size="13" color="#004ba0" sel="error,link"    style="bold,underline" />
 
-<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up" shadow="#363636" color="#ffffff" />
-<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up,underline" shadow="#363636" color="#ffffff" sel="mouseover"/>
-<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up" shadow="#363636" color="#888888" sel="disabled"/>
-<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up" shadow="#363636" color="#e4e4e4" />
-<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up,underline" shadow="#363636" color="#e4e4e4" sel="mouseover"/>
-<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up" shadow="#363636" color="#777777" sel="disabled"/>
-<font ci="NowPlayingButtonText" size="11" color="#aaaaaa" style="shadow_up,bold" shadow="#363636" />
-<font ci="NowPlayingButtonText" size="11" color="#555555" sel="disabled" shadow="#c7c7c7" />
+<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up" shadow="#363636" color="#333333" />
+<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up,underline" shadow="#363636" color="#333333" sel="mouseover"/>
+<font ci="NowPlayingTrackText" face="cantarell" size="13" style="bold,shadow_up" shadow="#363636" color="#333333" sel="disabled"/>
+<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up" shadow="#363636" color="#333333" />
+<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up,underline" shadow="#363636" color="#333333" sel="mouseover"/>
+<font ci="NowPlayingArtistText" face="cantarell" size="11" style="bold,shadow_up" shadow="#333333" color="#333333" sel="disabled"/>
+<font ci="NowPlayingButtonText" size="11" color="#333333" style="shadow_up,bold" shadow="#333333" />
+<font ci="NowPlayingButtonText" size="11" color="#333333" sel="disabled" shadow="#c7c7c7" />
 
 <bitmap file="now_playing-info-bg.png">
 	<subBitmap ci="NowPlayingBg" edge="1,1,1,1"/>
@@ -1212,15 +1212,15 @@
 <font ci="SidebarRowFont" sel="drop" size="11" color="#333333" shadow="#ffffff" style="bold" />
 <font ci="SidebarRowFont" sel="drop,selected" size="11" color="#333333" shadow="#ffffff" style="bold" />
 
-<font ci="SidebarRowFont" sel="new-list" size="11" color="#dddddd" shadow="#333333" />
-<font ci="SidebarRowFont" sel="new-list,mousedown" size="11" color="#787878" shadow="#333333" />
+<font ci="SidebarRowFont" sel="new-list" size="11" color="#333333" shadow="#333333" />
+<font ci="SidebarRowFont" sel="new-list,mousedown" size="11" color="#333333" shadow="#333333" />
 <font ci="SidebarRowFont" sel="new-list,drop" size="11" style="bold" color="#333333" shadow="#ffffff" />
 
-<font ci="SidebarRowFont" sel="header" size="11" style="shadow_up" color="#888888" shadow="#333333" />
+<font ci="SidebarRowFont" sel="header" size="11" style="bold" color="#333333" shadow="#333333" />
 
-<font ci="SidebarRowSmallFont" size="11" color="#727272" />
-<font ci="SidebarRowSmallFont" sel="selected" color="#3d4e5d" shadow="#afd3f0" />
-<font ci="SidebarRowSmallFont" sel="selected,!focused" color="#c9c9c9" shadow="#444444" />
+<font ci="SidebarRowSmallFont" size="11" color="#333333" />
+<font ci="SidebarRowSmallFont" sel="selected" color="#333333" shadow="#afd3f0" />
+<font ci="SidebarRowSmallFont" sel="selected,!focused" color="#333333" shadow="#444444" />
 
 <font ci="SidebarRowSmallFont" sel="drop" size="11" color="#333333" />
 <font ci="SidebarRowSmallFont" sel="drop,selected" size="11" color="#333333" />
@@ -1254,12 +1254,12 @@
 <bitmap ci="SidebarCollectionAlbums" file="collection-albums.png" />
 <bitmap ci="SidebarCollectionArtists" file="collection-artists.png" />
 
-<font ci="SidebarHeaderFont" size="13" face="cantarell" style="bold" color="#111111" shadow="#cccccc" />
-<font ci="SidebarHeaderFont" sel="disabled" size="13" style="bold" color="#222222" shadow="#cccccc" />
-<font ci="SidebarHeaderFont" sel="mouseover" size="13" style="bold" color="#111111" shadow="#ececec" />
-<font ci="SidebarHeaderFont" sel="mousedown" size="13" style="bold" color="#111111" shadow="#ababab" />
-<font ci="SidebarHeaderFont" sel="small" size="11" face="cantarell" style="bold" color="#111111" shadow="#cccccc" />
-<font ci="SidebarHeaderFont" sel="small,disabled" size="11" style="bold" color="#222222" shadow="#cccccc" />
+<font ci="SidebarHeaderFont" size="13" face="cantarell" style="bold" color="#333333" shadow="#cccccc" />
+<font ci="SidebarHeaderFont" sel="disabled" size="13" style="bold" color="#333333" shadow="#cccccc" />
+<font ci="SidebarHeaderFont" sel="mouseover" size="13" style="bold" color="#333333" shadow="#ececec" />
+<font ci="SidebarHeaderFont" sel="mousedown" size="13" style="bold" color="#333333" shadow="#ababab" />
+<font ci="SidebarHeaderFont" sel="small" size="11" face="cantarell" style="bold" color="#333333" shadow="#cccccc" />
+<font ci="SidebarHeaderFont" sel="small,disabled" size="11" style="bold" color="#333333" shadow="#cccccc" />
 
 <color ci="TopListHeaderBg" color="#f9f9f9" />
 <color ci="TopListRowBg" color="#f9f9f9" />
