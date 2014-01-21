@@ -316,11 +316,11 @@
 <color ci="MainlistRow" sel="!playing,oddrow,albumview" />
 <color ci="MainlistRow" sel="!playing,!oddrow,albumview,group"                            color="#202020" />
 <color ci="MainlistRow" sel="selected,focused"                                            color="#d64937" />
-<color ci="MainlistRow" sel="selected,!focused"                                           color="#6c6c6c" />
-<color ci="MainlistRow" sel="light"                                                       color="#E8E6E2" />
+<color ci="MainlistRow" sel="selected,!focused"                                           color="#f9f9f9" />
+<color ci="MainlistRow" sel="light"                                                       color="#f9f9f9" />
 <color ci="MainlistRow" sel="light,oddrow"                                                color="#FEFDFB" />
-<color ci="MainlistRow" sel="light,selected,focused"                                      color="#7ab800" />
-<color ci="MainlistRow" sel="light,selected,!focused"                                     color="#aaaaaa" />
+<color ci="MainlistRow" sel="light,selected,focused"                                      color="#f9f9f9" />
+<color ci="MainlistRow" sel="light,selected,!focused"                                     color="#f9f9f9" />
 
 
 <!-- MAINLIST ROW FONT -->
@@ -337,13 +337,13 @@
 <!--  Done selecting on that enum      -->
 
 <!-- Playing overrides everything above -->
-<font ci="MainlistRow" sel="playing,!light"                                                      color="#afff84" />
+<font ci="MainlistRow" sel="playing,!light"                                                      color="#f9f9f9" />
 
 <!-- Being selected overrides everything above -->
-<font ci="MainlistRow" sel="selected,focused"                                             color="#333333" face="cantarell" shadow="none" />
-<font ci="MainlistRow" sel="selected,!focused,!light"                                            color="#333333" face="cantarell" shadow="none" />
-<font ci="MainlistRow" sel="selected,!focused,light"                                      color="#ffffff" shadow="none" />
-<font ci="MainlistRow" sel="selected,focused,light"                                      color="#ffffff" shadow="none" />
+<font ci="MainlistRow" sel="selected,focused"                                             color="#f9f9f9" face="cantarell" shadow="none" />
+<font ci="MainlistRow" sel="selected,!focused,!light"                                            color="#f9f9f9" face="cantarell" shadow="none" />
+<font ci="MainlistRow" sel="selected,!focused,light"                                      color="#f9f9f9" shadow="none" />
+<font ci="MainlistRow" sel="selected,focused,light"                                      color="#f9f9f9" shadow="none" />
 <!-- <font ci="MainlistRow" sel="light,!playing,unmatched"                                     color="#888888" /> -->
 
   <!-- Modifiers -->
@@ -353,41 +353,41 @@
 <!-- Color for lfiles that haven't been matched to a spotify track -->
 
 <font ci="MainlistColTitle"                                                    parent="mainlistRow" />
-<font ci="MainlistColTitle" sel="light"                                        color="#1d1d1d" shadow="none" style="none" />
+<font ci="MainlistColTitle" sel="light"                                        color="#333333" shadow="none" style="none" />
 <font ci="MainlistColTitle" sel="!playing,unmatched"                           color="#7b7b7b" shadow="#2c2c2c" style="shadow_up" />
 <font ci="MainlistColTitle" sel="!playing,unmatched,light"                     color="#757574" shadow="none" style="none" />
 <font ci="MainlistColTitle" sel="!playing,error"                               color="#de9999" />
 <font ci="MainlistColTitle" sel="!playing,notavail"                            color="#7b7b7b" shadow="#2c2c2c" style="shadow_up" />
 <font ci="MainlistColTitle" sel="!playing,notavail,light"                      color="#757574" shadow="none" style="none" />
 <font ci="MainlistColTitle" sel="!playing,premiumonly"                         color="#776990" />
-<font ci="MainlistColTitle" sel="playing,!light"                               color="#afff84" />
-<font ci="MainlistColTitle" sel="selected,focused"                             color="#000f1a" shadow="none" />
-<font ci="MainlistColTitle" sel="selected,!focused"                            color="#bbbbbb" shadow="none" />
+<font ci="MainlistColTitle" sel="playing,!light"                               color="#f9f9f9" />
+<font ci="MainlistColTitle" sel="selected,focused"                             color="#f9f9f9" shadow="none" />
+<font ci="MainlistColTitle" sel="selected,!focused"                            color="#f9f9f9" shadow="none" />
 <font ci="MainlistColTitle" sel="selected,!focused,light"                      color="#ffffff" shadow="none" />
 <font ci="MainlistColTitle" sel="selected,focused,light"                       color="#ffffff" shadow="none" />
 <!-- Modifiers -->
 <font ci="MainlistColTitle" sel="@manuallyqueued,!premiumonly" color="#f4ef94" colorEffect="multiply"/>
 <font ci="MainlistColTitle" sel="@link" style="underline" colorEffect="scale:1.3"/>
 
-<font ci="MainlistColNumber"                                                   color="#666666" parent="mainlistRow" />
-<font ci="MainlistColNumber" sel="playing"                                     color="#79a162" />
-<font ci="MainlistColNumber" sel="selected,focused"                            color="#000f1a" shadow="none" />
-<font ci="MainlistColNumber" sel="selected,!focused"                           color="#bbbbbb" shadow="none" />
+<font ci="MainlistColNumber"                                                   color="#333333" parent="mainlistRow" />
+<font ci="MainlistColNumber" sel="playing"                                     color="#333333" />
+<font ci="MainlistColNumber" sel="selected,focused"                            color="#f9f9f9" shadow="none" />
+<font ci="MainlistColNumber" sel="selected,!focused"                           color="#f9f9f9" shadow="none" />
 
-<font ci="MainlistColTime"                                                     color="#888888" parent="mainlistRow" />
-<font ci="MainlistColTime" sel="light"                                         color="#757574" shadow="none" style="none" />
+<font ci="MainlistColTime"                                                     color="#333333" parent="mainlistRow" />
+<font ci="MainlistColTime" sel="light"                                         color="#333333" shadow="none" style="none" />
 <font ci="MainlistColTime" sel="error"                                         color="#9a7070" />
 <font ci="MainlistColTime" sel="notavail,!light"                               color="#7b7b7b" />
 <font ci="MainlistColTime" sel="playing,!light"                                color="#afff84" />
-<font ci="MainlistColTime" sel="selected,focused"                              color="#000f1a" shadow="none" />
-<font ci="MainlistColTime" sel="selected,!focused"                             color="#bbbbbb" shadow="none" />
-<font ci="MainlistColTime" sel="selected,focused,light|selected,!focused,light" color="#ffffff" shadow="none" />
+<font ci="MainlistColTime" sel="selected,focused"                              color="#f9f9f9" shadow="none" />
+<font ci="MainlistColTime" sel="selected,!focused"                             color="#f9f9f9" shadow="none" />
+<font ci="MainlistColTime" sel="selected,focused,light|selected,!focused,light" color="#f9f9f9" shadow="none" />
 
-<font ci="MainlistColAdded"                                                    color="#666666" parent="mainlistRow" />
-<font ci="MainlistColAdded" sel="light"                                        color="#757574" shadow="none" style="none" />
+<font ci="MainlistColAdded"                                                    color="#333333" parent="mainlistRow" />
+<font ci="MainlistColAdded" sel="light"                                        color="#333333" shadow="none" style="none" />
 <font ci="MainlistColAdded" sel="playing,!light"                               color="#afff84" />
-<font ci="MainlistColAdded" sel="selected,focused"                             color="#000f1a" shadow="none" />
-<font ci="MainlistColAdded" sel="selected,!focused"                            color="#bbbbbb" shadow="none" />
+<font ci="MainlistColAdded" sel="selected,focused"                             color="#f9f9f9" shadow="none" />
+<font ci="MainlistColAdded" sel="selected,!focused"                            color="#f9f9f9" shadow="none" />
 
 
 <font ci="MainlistColAddedMod" sel="!playing,old9" color="#666666"/>
@@ -420,7 +420,7 @@
 <font ci="MainlistAlbumViewAlbumName" sel="mouseover" style="bold,underline" color="#ffffff" shadow="#111111" />
 <font ci="MainlistAlbumViewAlbumYear" face="cantarell" size="14" color="#466634" shadow="#222222" style="shadow_up" />
 
-<font ci="MainlistPlaylistOwner" face="cantarell" size="14" color="#466634" shadow="#404040" />
+<font ci="MainlistPlaylistOwner" face="cantarell" size="14" color="#333333" shadow="#404040" />
 <font ci="MainlistPlaylistOwner" sel="link,!mouseover" face="arial" style="bold" size="14" color="#808080" shadow="#404040" />
 <font ci="MainlistPlaylistOwner" sel="link,mouseover" face="arial" style="bold,underline" size="14" color="#EEEEEE" shadow="#404040" />
 
@@ -434,7 +434,7 @@
 <font ci="MainlistAlbumNotAvailable" size="13" color="#dcd5f3" face="tahoma" sel="premium" shadow="#675980"/>
 <font ci="MainlistAlbumNotAvailable" size="13" color="#ffd1cf" face="tahoma" sel="other" shadow="#6F5342" />
 
-<font ci="MainlistAlbumCopyright" size="9" color="#555555" />
+<font ci="MainlistAlbumCopyright" size="9" color="#333333" />
 
 <bitmap ci="MainlistAutofetchBg" file="mainlist-paging-loading-bg.png" flags="P" />
 
@@ -843,8 +843,8 @@
 </bitmap>
 
 <!-- History nav -->
-<font ci="ToolbarSmall" size="9" color="#111111" shadow="#" />
-<font ci="ToolbarSmall" sel="mousedown" size="9" color="#999999" shadow="#111111" />
+<font ci="ToolbarSmall" size="11" color="#333333" shadow="#" />
+<font ci="ToolbarSmall" sel="mousedown" size="11" color="#333333" shadow="#111111" />
 
 
 <bitmap file="toolbar-back.png">
@@ -915,7 +915,7 @@
 <bitmap ci="LoginWindowMessageBubble" file="login/bubble.png" edge="5, 14, 5, 4" />
 <bitmap ci="LoginWindowErrorIcon" file="login/bubble-flag.png" />
 
-<font ci="LoginWindowLoggingInText" size="15" color="#333333" />
+<font ci="LoginWindowLoggingInText" size="16" color="#333333" />
 
 <font ci="LoginWindowErrorTitle" size="13" color="#333333" style="bold" />
 <font ci="LoginWindowErrorText" size="11" color="#333333" />
@@ -926,8 +926,8 @@
 <font ci="LoginWindowLoginCaption" size="11" color="#333333" />
 <font ci="LoginWindowLoginCaption" style="bold" sel="bold" />
 <font ci="LoginWindowLoginCaption" style="underline" sel="linkover" />
-<font ci="LoginWindowLink" size="9" color="#333333" />
-<font ci="LoginWindowLink" size="9" color="#333333" style="underline" sel="linkover" />
+<font ci="LoginWindowLink" size="11" color="#333333" />
+<font ci="LoginWindowLink" size="11" color="#333333" style="underline" sel="linkover" />
 <font ci="LoginWindowButton" size="12" color="#333333" shadow="#333333" style="shadow_up" />
 <font ci="LoginWindowButton" size="12" color="#333333" shadow="#333333" style="shadow_up" sel="disabled" />
 
@@ -961,12 +961,12 @@
 </bitmap>
 
 <bitmap file="text_field.png">
-	<subBitmap height="22" ci="EditboxBg" edge="4,3,2,2" />
-	<subBitmap height="22" ci="EditboxBg" edge="4,3,2,2" sel="disabled" />
+	<subBitmap height="24" ci="EditboxBg" edge="4,3,2,2" />
+	<subBitmap height="24" ci="EditboxBg" edge="4,3,2,2" sel="disabled" />
 </bitmap>
 <bitmap file="login/input.png">
-	<subBitmap height="23" ci="EditboxBg" edge="7,4,7,4" sel="login"/>
-	<subBitmap height="23" ci="EditboxBg" edge="7,4,7,4" sel="login,disabled" />
+	<subBitmap height="24" ci="EditboxBg" edge="7,4,7,4" sel="login"/>
+	<subBitmap height="24" ci="EditboxBg" edge="7,4,7,4" sel="login,disabled" />
 </bitmap>
 <bitmap file="tab-bar-filter.png">
 	<subBitmap height="19" ci="EditboxBg" edge="22,3,9,3" sel="filter" />
