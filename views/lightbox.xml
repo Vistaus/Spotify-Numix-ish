@@ -19,7 +19,7 @@ end
       width: ${data.width + 64};
       height: ${data.height + 64};
       align: center,middle;
-	  bgcolor: #000000;
+	  bgcolor: #2d2d2d;
 	}
   </style>
   <!--<debug color="#000"/>-->	  

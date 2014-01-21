@@ -426,8 +426,8 @@
 
 <bitmap ci="MainlistSectionHeaderBg" file="mainlist-section-header-bg.png" height="23" />
 
-<color ci="MainlistSectionHeaderBgAdditionalTracks" color="#222222" />
-<font ci="MainlistSectionHeaderBgAdditionalTracksText" color="#666666" size="9" />
+<color ci="MainlistSectionHeaderBgAdditionalTracks" color="#333333" />
+<font ci="MainlistSectionHeaderBgAdditionalTracksText" color="#333333" size="9" />
 
 <color ci="MainlistAlbumNotAvailable" color="#776990" sel="premium"/>
 <color ci="MainlistAlbumNotAvailable" color="#7F6362" sel="other"/>
@@ -1356,7 +1356,7 @@
 <font ci="LabelGroupHeader" sel="links" size="11"     style="bold" color="#8fffe6" />
 <font ci="LabelGroupHeader" sel="downloads" size="11" style="bold" color="#8fc4ff" />
 
-<color ci="LabelGroupBg" color="#1f1f1f" />
+<color ci="LabelGroupBg" color="#f2f2f2" />
 
 <font ci="LabelNewsHeader" size="11" style="bold" color="#ffffff" />
 <font ci="LabelNewsText" size="11" color="#b0b0b0" />
@@ -1365,7 +1365,7 @@
 <font ci="LabelEventHeader" size="11" style="bold" color="#ffffff" />
 <font ci="LabelEventHeader" sel="mouseover" style="bold,underline" />
 <font ci="LabelEventText" size="11" color="#808080" />
-<color ci="LabelEventDayBg" color="#908991" />
+<color ci="LabelEventDayBg" color="#f2f2f2" />
 
 <font ci="LabelLinkText" size="11" color="#b0b0b0" />
 <font ci="LabelLinkText" sel="mouseover" style="underline" />
@@ -1408,7 +1408,7 @@
 <font ci="SettingsFont" sel="warning" size="12" color="#FFFFFF" shadow="#555555" />
 <font ci="SettingsFont" sel="disabled" size="12" color="#949494" shadow="#555555" />
 <font ci="SettingsDropDownFont" size="12" color="#222222" shadow="#ffffff" />
-<font ci="SettingsDescriptionFont" size="11" color="#A0A0A0" shadow="#555555" />
+<font ci="SettingsDescriptionFont" size="11" color="#333333" shadow="#555555" />
 <font ci="SettingsButton" size="12" color="#000000" shadow="#eeeeee" />
 <font ci="SettingsButton" size="12" color="#333333" shadow="#aaaaaa" sel="disabled" />
 

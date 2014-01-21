@@ -33,7 +33,7 @@
 
   <!-- <debug color="kaka"/> -->
 
-  <hbox bgcolor='#ecebe8'>
+  <hbox bgcolor='#f2f2f2'>
   <box max-width='inf' />
   <vbox width='256'>
     <box flex='2' max-height='inf' />
