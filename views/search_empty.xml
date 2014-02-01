@@ -39,7 +39,7 @@
     <box flex='2' max-height='inf' />
     <img src="search-glass.png" imagemode='cutout-native'/>
     <box height='12' />
-    <text flex='1' text-align='center' face='arial' size='13' color='#707070' text-shadow='#fff 0 1'>@{Empty search description}</text>
+    <text flex='1' text-align='center' face='cantarell' size='13' color='#2d2d2d' text-shadow='#fff 0 1'>@{Empty search description}</text>
     <box flex='3' max-height='inf' />
   </vbox>
   <box max-width='inf' />

@@ -252,13 +252,13 @@
   <subBitmap height="20" ci="MainlistLowerLinkButton" sel="mousedown" edge="9,0,9,0" />
 </bitmap>
 
-<font ci="SidebarBadge" sel="round" face="georgia" size="16" style="shadow_up" shadow="#c13a3a" color="#ffffff" />
+<font ci="SidebarBadge" sel="round" face="cantarell" size="16" style="shadow_up" shadow="#c13a3a" color="#ffffff" />
 <font ci="SidebarBadge" sel="round,selected,focused" style="shadow_up" shadow="#475b6b" face="arial" size="11" color="#b3ddfd" />
 <font ci="SidebarBadge" sel="round,selected,!focused" style="shadow_up" shadow="#c13a3a" face="arial" size="11" color="#ffffff" />
 
-<font ci="SidebarBadge" sel="square" face="georgia" size="16" shadow="none" color="#979797" />
-<font ci="SidebarBadge" sel="square,selected,focused" face="arial" size="11" shadow="none" color="#b0daf6" />
-<font ci="SidebarBadge" sel="square,selected,!focused" face="arial" size="11" shadow="none" color="#979797" />
+<font ci="SidebarBadge" sel="square" face="cantarell" size="16" shadow="none" color="#333333" />
+<font ci="SidebarBadge" sel="square,selected,focused" face="arial" size="11" shadow="none" color="#f9f9f9" />
+<font ci="SidebarBadge" sel="square,selected,!focused" face="arial" size="11" shadow="none" color="#f9f9f9" />
 
 <bitmap file="Sourcelist/badge-round.png">
   <subBitmap width="17" ci="SidebarBadgeBackground" sel="round" edge="6,0,6,0" />
@@ -314,11 +314,11 @@
 <color ci="MainlistRow" sel="!playing"                                                    color="#f9f9f9" />
 <color ci="MainlistRow" sel="!playing,oddrow"                                             color="#f9f9f9" />
 <color ci="MainlistRow" sel="!playing,oddrow,albumview" />
-<color ci="MainlistRow" sel="!playing,!oddrow,albumview,group"                            color="#202020" />
+<color ci="MainlistRow" sel="!playing,!oddrow,albumview,group"                            color="#f9f9f9" />
 <color ci="MainlistRow" sel="selected,focused"                                            color="#d64937" />
 <color ci="MainlistRow" sel="selected,!focused"                                           color="#f9f9f9" />
 <color ci="MainlistRow" sel="light"                                                       color="#f9f9f9" />
-<color ci="MainlistRow" sel="light,oddrow"                                                color="#FEFDFB" />
+<color ci="MainlistRow" sel="light,oddrow"                                                color="#333333" />
 <color ci="MainlistRow" sel="light,selected,focused"                                      color="#f9f9f9" />
 <color ci="MainlistRow" sel="light,selected,!focused"                                     color="#f9f9f9" />
 
@@ -331,7 +331,7 @@
 <!-- <font ci="MainlistRow" sel="playing,unmatched"                                           color="#7b7b7b" shadow="#2c2c2c" style="shadow_up" />
 -->
 <!-- Select based on the error state enum -->
-<font ci="MainlistRow" sel="!playing,error"                                               color="#de9999" />
+<font ci="MainlistRow" sel="!playing,error"                                               color="#333333" />
 <font ci="MainlistRow" sel="!playing,notavail"                                            color="#7b7b7b" shadow="#2c2c2c" style="shadow_up" />
 <font ci="MainlistRow" sel="!playing,notavail,light"                                      color="#757574" shadow="none" style="none" />
 <!--  Done selecting on that enum      -->
@@ -348,7 +348,7 @@
 
   <!-- Modifiers -->
 <font ci="MainlistRow" sel="@link" style="underline" colorEffect="scale:1.3"/>
-<font ci="MainlistRow" sel="@manuallyqueued" color="#f4ef94" colorEffect="multiply"/>
+<font ci="MainlistRow" sel="@manuallyqueued" color="#333333" colorEffect="multiply"/>
 
 <!-- Color for lfiles that haven't been matched to a spotify track -->
 
@@ -378,22 +378,22 @@
 <font ci="MainlistColTime" sel="light"                                         color="#333333" shadow="none" style="none" />
 <font ci="MainlistColTime" sel="error"                                         color="#9a7070" />
 <font ci="MainlistColTime" sel="notavail,!light"                               color="#7b7b7b" />
-<font ci="MainlistColTime" sel="playing,!light"                                color="#afff84" />
+<font ci="MainlistColTime" sel="playing,!light"                                color="#333333" />
 <font ci="MainlistColTime" sel="selected,focused"                              color="#f9f9f9" shadow="none" />
 <font ci="MainlistColTime" sel="selected,!focused"                             color="#f9f9f9" shadow="none" />
 <font ci="MainlistColTime" sel="selected,focused,light|selected,!focused,light" color="#f9f9f9" shadow="none" />
 
 <font ci="MainlistColAdded"                                                    color="#333333" parent="mainlistRow" />
 <font ci="MainlistColAdded" sel="light"                                        color="#333333" shadow="none" style="none" />
-<font ci="MainlistColAdded" sel="playing,!light"                               color="#afff84" />
+<font ci="MainlistColAdded" sel="playing,!light"                               color="#333333" />
 <font ci="MainlistColAdded" sel="selected,focused"                             color="#f9f9f9" shadow="none" />
 <font ci="MainlistColAdded" sel="selected,!focused"                            color="#f9f9f9" shadow="none" />
 
 
-<font ci="MainlistColAddedMod" sel="!playing,old9" color="#666666"/>
-<font ci="MainlistColAddedMod" sel="!playing,old8" color="#777777"/>
-<font ci="MainlistColAddedMod" sel="!playing,old7" color="#888888"/>
-<font ci="MainlistColAddedMod" sel="!playing,old6" color="#999999"/>
+<font ci="MainlistColAddedMod" sel="!playing,old9" color="#333333"/>
+<font ci="MainlistColAddedMod" sel="!playing,old8" color="#333333"/>
+<font ci="MainlistColAddedMod" sel="!playing,old7" color="#333333"/>
+<font ci="MainlistColAddedMod" sel="!playing,old6" color="#333333"/>
 <font ci="MainlistColAddedMod" sel="!playing,old5" color="#AAAAAA"/>
 <font ci="MainlistColAddedMod" sel="!playing,old4" color="#BBBBBB"/>
 <font ci="MainlistColAddedMod" sel="!playing,old3" color="#CCCCCC"/>
@@ -1056,13 +1056,13 @@
 <font ci="InfoViewSearchHeaderLink"  size="12" color="#707070" sel="more" />
 <font ci="InfoViewSearchHeaderLink"  size="12" color="#707070" sel="more,linkover" style="underline" />
 
-<font ci="InfoViewPlaylistName" size="14" style="bold" color="#ffffff" face="arial" />
+<font ci="InfoViewPlaylistName" size="14" style="bold" color="#f9f9f9" face="arial" />
 <font ci="InfoViewPlaylistOwner" size="14" color="#707070" face="arial" />
 <font ci="InfoViewPlaylistOwner" size="14" color="#a0a0a0" face="arial" sel="link"/>
 <font ci="InfoViewPlaylistOwner" size="14" color="#a0a0a0" face="arial" sel="linkover" style="underline"/>
 <font ci="InfoViewPlaylistStats" size="14" color="#707070" face="arial" />
 
-<font ci="InfoViewArtistRelated" size="12" color="#a0a0a0" />
+<font ci="InfoViewArtistRelated" size="12" color="#333333" />
 <font ci="InfoViewArtistRelated" sel="linkover" size="12" color="#ffffff" style="underline" />
 
 <bitmap ci="NowPlayingInternalImage" />
@@ -1206,11 +1206,11 @@
 
 <font ci="SidebarRowFont" size="11" color="#333333" shadow="#333333" />
 <font ci="SidebarRowFont" sel="link,mouseover" color="#333333" />
-<font ci="SidebarRowFont" sel="selected" style="bold" color="#333333" shadow="#afd3f0" />
-<font ci="SidebarRowFont" sel="selected,!focused" style="bold" color="#333333" shadow="#444444" />
+<font ci="SidebarRowFont" sel="selected" style="bold" color="#f9f9f9" shadow="#afd3f0" />
+<font ci="SidebarRowFont" sel="selected,!focused" style="bold" color="#f9f9f9" shadow="#444444" />
 
 <font ci="SidebarRowFont" sel="drop" size="11" color="#333333" shadow="#ffffff" style="bold" />
-<font ci="SidebarRowFont" sel="drop,selected" size="11" color="#333333" shadow="#ffffff" style="bold" />
+<font ci="SidebarRowFont" sel="drop,selected" size="11" color="#f9f9f9" shadow="#ffffff" style="bold" />
 
 <font ci="SidebarRowFont" sel="new-list" size="11" color="#333333" shadow="#333333" />
 <font ci="SidebarRowFont" sel="new-list,mousedown" size="11" color="#333333" shadow="#333333" />
@@ -1219,11 +1219,11 @@
 <font ci="SidebarRowFont" sel="header" size="11" style="bold" color="#333333" shadow="#333333" />
 
 <font ci="SidebarRowSmallFont" size="11" color="#333333" />
-<font ci="SidebarRowSmallFont" sel="selected" color="#333333" shadow="#afd3f0" />
-<font ci="SidebarRowSmallFont" sel="selected,!focused" color="#333333" shadow="#444444" />
+<font ci="SidebarRowSmallFont" sel="selected" color="#f9f9f9" shadow="#afd3f0" />
+<font ci="SidebarRowSmallFont" sel="selected,!focused" color="#f9f9f9" shadow="#444444" />
 
 <font ci="SidebarRowSmallFont" sel="drop" size="11" color="#333333" />
-<font ci="SidebarRowSmallFont" sel="drop,selected" size="11" color="#333333" />
+<font ci="SidebarRowSmallFont" sel="drop,selected" size="11" color="#f9f9f9" />
 
 <color ci="SidebarRowBg" />
 <bitmap file="Sourcelist/selection.png">

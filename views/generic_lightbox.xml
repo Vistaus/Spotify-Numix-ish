@@ -73,7 +73,7 @@ end
 
   % if data.fullscreen and data.margin then
   <box>
-    <box margin="0,${data.margin.top},0,${data.margin.bottom}" bgcolor="#000000" boxflags="no-overflow">
+    <box margin="0,${data.margin.top},0,${data.margin.bottom}" bgcolor="#f2f2f2" boxflags="no-overflow">
       % step.content()
     </box>
   </box>
