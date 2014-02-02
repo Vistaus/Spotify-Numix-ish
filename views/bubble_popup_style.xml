@@ -1,7 +1,7 @@
 <style>
 description {
   size: 11;
-  color: #000000;
+  color: #f9f9f9;
 }
 header {
   description;
@@ -19,7 +19,7 @@ inbox-header {
 }
 button {
   description;
-  color: #ffffff;
+  color: #d4d4d4;
   align: middle;
 }
 background {
@@ -27,7 +27,7 @@ background {
 }
 button-cancel {
   size: 11;
-  color: #444;
+  color: #d4d4d4;
   text-shadow: #fff 0 1;
   margin: 9,0,9,1;
   align: center, middle;
@@ -38,7 +38,7 @@ button-cancel-disabled {
 }
 button-ok {
   button-cancel;
-  color: #fff;
+  color: #d4d4d4;
   text-shadow: #1a67a3 0 -1;
 }
 button-ok-disabled {

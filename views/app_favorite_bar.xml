@@ -1,7 +1,7 @@
 <document>
 	<style>
 		buttonHeader {
-		color: #252419;
+		color: #2d2d2d;
 		align: right;
 		height: 23;
 		margin: 0,7,7,7;
@@ -18,7 +18,7 @@
 			max-lines: 1;
 			face:arial;
 			size:14;
-			color:#252419;
+			color:#f9f9f9;
 		%-- This flexing, it is ugly.
 			flex: 100;
 			margin: 10,0,15,0;
@@ -42,7 +42,7 @@
 		}
 		button-cancel {
 			button;
-			color: #222;
+			color: #dedede;
 			text-shadow: #ededed 0 1;
 			height: 24;
 		}
@@ -68,7 +68,7 @@
 
 	%-- <debug color="kaka" />
 
-	<box bgcolor="#373737">
+	<box bgcolor="#dedede">
 		<vbox>
 			<box maxWidth="inf">
 				<img alt="HeadBarBackground|self" shadow="1"></img>

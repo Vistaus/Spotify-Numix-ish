@@ -54,7 +54,7 @@ title = function() %>@{gracenote_icon}<% end,
               <img align="right" alt="VerticalScrollbar|bright,edge" width="1" />
               <img align="right,top" alt="VerticalScrollbar|bright,edge" margin="0,0,1,0" width="13" height="1" />
               <img align="right,bottom" alt="VerticalScrollbar|bright,edge" margin="0,0,1,0" width="13" height="1" />
-              <scrollview maxheight="260" margin="0,0,1,0" scrollbarstyle="bright" maxwidth="inf"><text flex="1" color="#000" align="center" bgcolor="#fff">${data.gracenote_eula}</text></scrollview>
+              <scrollview maxheight="260" margin="0,0,1,0" scrollbarstyle="bright" maxwidth="inf"><text flex="1" color="#2d2d2d" align="center" bgcolor="#f9f9f9">${data.gracenote_eula}</text></scrollview>
             </box>
         </vbox>
 
@@ -83,7 +83,7 @@ title = function() %>@{gracenote_icon}<% end,
       </box>
       % else
       <box>
-        <box height="35" bgcolor="#3f5998"/>
+        <box height="35" bgcolor="#f9f9f9"/>
         <img src="fb_permissions_header.png" align="left,middle" margin="0,0,0,0" imagemode="native"/>
         <hbox align="right,middle">
           <img align="middle" height="24" width="24" src="${data.fb_image}" />
@@ -98,8 +98,8 @@ title = function() %>@{gracenote_icon}<% end,
       </hbox>
       <box maxheight="inf" />
       <vbox margin="12,0,12,0">
-        <box height="1" bgcolor="#d4d3d0"/>
-        <hbox height="52" bgcolor="#ffffff">
+        <box height="1" bgcolor="#f9f9f9"/>
+        <hbox height="52" bgcolor="#f9f9f9">
           <hbox maxwidth="inf" />
           <hbox align="middle,right">
             <button height="26" image="FbLightboxButton|default" padding="8,-1,8,1" style="fb-button;textYes" onclick="accept" label="@{Facebook permission okay, listen to music}" />

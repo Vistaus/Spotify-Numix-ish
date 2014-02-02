@@ -1,14 +1,14 @@
 <style>
 	text-style {
 		size: 18;
-		color: #808080;
+		color: #f9f9f9;
 		face: arial;
 		text-shadow: #222 0 1;
 		flex: 1;
 		align: middle,center;
 		max-width: 380;
 		text-align: center;
-		link-color: #fff;
+		link-color: #2d2d2d;
 	}
 	subtext-style {
 		text-style;
