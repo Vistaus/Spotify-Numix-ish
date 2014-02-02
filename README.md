@@ -7,6 +7,11 @@ and something's wrong, then you may bug me.
 
 Installation
 ==================
+
+ATTENTION: FEB 2 2014
+DON'T follow the instructions below, I need to update the instructions because of a change in my repo. I'll remove this message
+when it's useable again.
+
 -Clone the repo and navigate to the folder.
 
 -Select all files and folders from the repo and compress them to a ZIP file named "resources.zip" (without the quotes).
